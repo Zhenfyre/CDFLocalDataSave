@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">CDF Local Data Save</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_views_slider">ViewsSliderActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="submit">SUBMIT</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructions_long">Swipe left and right between tabs to enter all of your
+    results from your home test kits. When you have entered all of your results, click the Submit
+    button at the bottom.</string>
+
+    <string name="slide_1_title">Welcome!</string>
+    <string name="slide_1_desc">This application is developed by the Community Driven Flint team
+        to collect and share community provided water quality and health data.</string>
+
+    <string name="slide_2_title">Water Testing Instructions</string>
+    <string name="slide_2_desc">We are using the H2O OK Plus home water test kit.  Tap the
+        YouTube video below for extra help using the test kit. </string>
+    <string name="video_url">https://www.youtube.com/watch?v=Gy1S61cpvik</string>
+    <string name="slides_ended">Let\'s record your results.</string>
+
+    <!-- Category name for the vocabulary words for collection [CHAR LIMIT=20] -->
+    <string name="category_collection">Collection</string>
+
+    <!-- Category name for aesthetics [CHAR LIMIT=20] -->
+    <string name="category_aesthetics">Aesthetics</string>
+
+    <!-- Category name for the vocabulary words for bacteria [CHAR LIMIT=20] -->
+    <string name="category_bacteria">Bacteria</string>
+
+    <!-- Category name for the vocabulary words for Test Strips [CHAR LIMIT=20] -->
+    <string name="category_testStrips">Test Strips</string>
+
+    <string name="enter_value">enter value</string>
+    <string name="iron">Iron</string>
+    <string name="copper">Copper</string>
+    <string name="select_one">select one</string>
+    <string name="nitrate">Nitrate</string>
+    <string name="nitrite">Nitrite</string>
+    <string name="ph">pH = </string>
+    <string name="alkalinity">Alkalinity</string>
+    <string name="total_chlorine">Total Chlorine</string>
+    <string name="total_hardness">Total Hardness</string>
+    <string name="type_description">type description</string>
+    <string name="water_taste">Only if you feel comfortable drinking the water, describe the taste of the water:</string>
+    <string name="water_smell">Describe the smell of the water:</string>
+    <string name="water_appearance">Describe the color/appearance of the water:</string>
+    <string name="temperature">Temperature of water achieved before collection:</string>
+
+    <string name="time_running">How long did you run the water before collecting your sample (1 min = 60 seconds)?</string>
+    <string name="normal_use">What do you normally use water from the bathroom sink for? Check all that apply or None. </string>
+    <string name="page_title">Report Water Testing Results</string>
+    <string name="bacteria">Bacteria</string>
+    <string name="pesticide">Pesticide</string>
+    <string name="lead">Lead</string>
+    <string name="rottenEgg_smell">Does the water have a rotten egg odor?</string>
+    <string name="sediment">Is there sediment in the bottom of the container?</string>
+    <string name="feathery">Does the sediment have a feathery appearance?</string>
+    <string name="drinking">Drinking</string>
+    <string name="brushing_teeth">Brushing Teeth</string>
+    <string name="handwashing">Handwashing</string>
+    <string name="none">None</string>
+    <string name="scalding">Scalding</string>
+    <string name="hot">Hot</string>
+    <string name="warm">Warm</string>
+    <string name="tepid">Tepid</string>
+    <string name="cool">Cool</string>
+    <string name="cold">Cold</string>
+    <string name="water_color_description">The water is \u0020 \u0020 ... \u0020 \u0020 in color</string>
+    <string name="water_smell_description">The water smells like...</string>
+    <string name="water_taste_description">The water tastes...</string>
+    <string name="enter_ppm">\u0020 \u0020 \u0020 \u0020 \u0020 \u0020  ppm</string>
+    <string name="enter_pH"> \u0020 \u0020 \u0020 \u0020 \u0020 \u0020 \u0020 </string>
+    <string name="safe">Safe</string>
+    <string name="unsafe">Unsafe</string>
+    <string name="negative">Negative</string>
+    <string name="positive">Positive</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="defaultTabletNumber">\u0020 \u0020 000 \u0020 \u0020 </string>
+    <string name="date_of_collection">Date of Collection</string>
+
+    <string name="time_of_collection">Time of Collection</string>
+
+    <string name="testStripSectionTitle">Enter the values indicated from each of your test strips:</string>
+    <string name="summary">Summary: </string>
+    <string name="running_time_short">Running Time</string>
+    <string name="water_temp_short">Temperature</string>
+    <string name="appearance_short">Color</string>
+    <string name="smell_short">Smell</string>
+    <string name="taste_short">Taste</string>
+    <string name="rotten_egg_short">Rotten Egg Smell</string>
+    <string name="sediment_short">Sediment</string>
+    <string name="feathery_short">Feathery</string>
+    <string name="concentration_ppm">ppm</string>
+    <string name="email_subject">CDF Water Testing Results Summary</string>
+    <string name="email_address">communitydrivenflint@gmail.com</string>
+    <string name="thank_you">Lastly, click the send arrow in the top right!</string>
+
+    <string name="hh_mm_am_pm">Time of Collection: hh:mm am/pm</string>
+    <string name="tablet_number">Tablet Number: 000</string>
+    <string name="mm_dd_yyyy">Date: MM/DD/YYYY</string>
+    <string name="default_time">0 seconds</string>
+    <string name="water_temp">Temperature achieved</string>
+</resources>

@@ -1,0 +1,75 @@
+package cdfflint.pilot.cdflocaldatasave;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    public static final int ADD_NOTE_REQUEST = 1;
+
+    private RecordViewModel recordViewModel;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        FloatingActionButton buttonAddRecord = findViewById(R.id.button_add_record);
+        buttonAddRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddRecordActivity.class);
+                startActivityForResult(intent, ADD_NOTE_REQUEST);
+            }
+        });
+
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        final RecordAdapter adapter = new RecordAdapter();
+        recyclerView.setAdapter(adapter);
+
+        recordViewModel = new ViewModelProvider(this).get(RecordViewModel.class);
+        recordViewModel.getAllRecords().observe(this, new Observer<List<SQLRecord>>() {
+            @Override
+            public void onChanged(List<SQLRecord> records) {
+                adapter.setRecords(records);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK){
+            String collectionDate = data.getStringExtra(AddRecordActivity.EXTRA_COLLECTION_DATE);
+            String collectionTime = data.getStringExtra(AddRecordActivity.EXTRA_COLLECTION_TIME);
+            int tabletNumber = data.getIntExtra(AddRecordActivity.EXTRA_TABLET, 0);
+            String timeRunning = data.getStringExtra(AddRecordActivity.EXTRA_TIME_RUNNING);
+            String waterTemp = data.getStringExtra(AddRecordActivity.EXTRA_WATER_TEMP);
+
+            SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber,
+                timeRunning, waterTemp);
+          recordViewModel.insert(record);
+
+            Toast.makeText(this, "Record saved", Toast.LENGTH_SHORT).show();
+          } else {
+            Toast.makeText(this, "Record not saved", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
