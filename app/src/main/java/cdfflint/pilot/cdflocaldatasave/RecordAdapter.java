@@ -41,6 +41,10 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordHold
         notifyDataSetChanged();
     }
 
+    public SQLRecord getRecordAt(int position){
+        return records.get(position);
+    }
+
     class RecordHolder extends RecyclerView.ViewHolder{
         private TextView textViewTablet;
         private TextView textViewDate;
