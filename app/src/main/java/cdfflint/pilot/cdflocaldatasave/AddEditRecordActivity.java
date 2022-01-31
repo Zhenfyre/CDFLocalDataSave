@@ -12,8 +12,10 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
-public class AddRecordActivity extends AppCompatActivity {
+public class AddEditRecordActivity extends AppCompatActivity {
 
+    public static final String EXTRA_ID =
+            "cdfflint.pilot.cdflocaldatasave.EXTRA_ID";
     public static final String EXTRA_TABLET =
             "cdfflint.pilot.cdflocaldatasave.EXTRA_TABLET";
     public static final String EXTRA_COLLECTION_DATE =
@@ -47,7 +49,18 @@ public class AddRecordActivity extends AppCompatActivity {
         numberPickerTablet.setMaxValue(32);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-        setTitle("Add Record");
+        Intent intent = getIntent();
+
+        if (intent.hasExtra(EXTRA_ID)){
+            setTitle("Edit Record");
+            editTextDate.setText(intent.getStringExtra(EXTRA_COLLECTION_DATE));
+            editTextTimeCollected.setText(intent.getStringExtra(EXTRA_COLLECTION_TIME));
+            editTextTimeRunning.setText(intent.getStringExtra(EXTRA_TIME_RUNNING));
+            editTextTemp.setText(intent.getStringExtra(EXTRA_WATER_TEMP));
+            numberPickerTablet.setValue(intent.getIntExtra(EXTRA_TABLET, 0));
+        } else {
+            setTitle("Add Record");
+        }
     }
 
     private void saveRecord(){
@@ -69,6 +82,11 @@ public class AddRecordActivity extends AppCompatActivity {
             data.putExtra(EXTRA_COLLECTION_TIME, collectionTime);
             data.putExtra(EXTRA_TIME_RUNNING, timeRunning);
             data.putExtra(EXTRA_WATER_TEMP, waterTemp);
+
+            int id = getIntent().getIntExtra(EXTRA_ID, -1);
+            if (id != -1) {
+                data.putExtra(EXTRA_ID, id);
+            }
 
             setResult(RESULT_OK, data);
             finish();

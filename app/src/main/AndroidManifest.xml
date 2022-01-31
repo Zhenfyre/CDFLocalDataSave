@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CDFLocalDataSave">
         <activity
-            android:name=".AddRecordActivity"
+            android:name=".AddEditRecordActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"/>
         <activity

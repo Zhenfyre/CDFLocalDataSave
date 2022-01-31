@@ -24,6 +24,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final int ADD_NOTE_REQUEST = 1;
+    public static final int EDIT_NOTE_REQUEST = 2;
 
     private RecordViewModel recordViewModel;
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddRecordActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddEditRecordActivity.class);
                 startActivityForResult(intent, ADD_NOTE_REQUEST);
             }
         });
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         recordViewModel.getAllRecords().observe(this, new Observer<List<SQLRecord>>() {
             @Override
             public void onChanged(List<SQLRecord> records) {
-                adapter.setRecords(records);
+                adapter.submitList(records);
             }
         });
 
@@ -68,6 +69,20 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Record deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
+
+        adapter.setOnItemClickListener(new RecordAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(SQLRecord record) {
+                Intent intent = new Intent(MainActivity.this, AddEditRecordActivity.class);
+                intent.putExtra(AddEditRecordActivity.EXTRA_ID, record.getId());
+                intent.putExtra(AddEditRecordActivity.EXTRA_COLLECTION_DATE, record.getCollectionDate());
+                intent.putExtra(AddEditRecordActivity.EXTRA_COLLECTION_TIME, record.getCollectionTime());
+                intent.putExtra(AddEditRecordActivity.EXTRA_TABLET, record.getTabletNumber());
+                intent.putExtra(AddEditRecordActivity.EXTRA_TIME_RUNNING, record.getTimeRunning());
+                intent.putExtra(AddEditRecordActivity.EXTRA_WATER_TEMP, record.getWaterTemp());
+                startActivityForResult(intent, EDIT_NOTE_REQUEST);
+            }
+        });
     }
 
     @Override
@@ -75,18 +90,41 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK){
-            String collectionDate = data.getStringExtra(AddRecordActivity.EXTRA_COLLECTION_DATE);
-            String collectionTime = data.getStringExtra(AddRecordActivity.EXTRA_COLLECTION_TIME);
-            int tabletNumber = data.getIntExtra(AddRecordActivity.EXTRA_TABLET, 0);
-            String timeRunning = data.getStringExtra(AddRecordActivity.EXTRA_TIME_RUNNING);
-            String waterTemp = data.getStringExtra(AddRecordActivity.EXTRA_WATER_TEMP);
+            String collectionDate = data.getStringExtra(AddEditRecordActivity.EXTRA_COLLECTION_DATE);
+            String collectionTime = data.getStringExtra(AddEditRecordActivity.EXTRA_COLLECTION_TIME);
+            int tabletNumber = data.getIntExtra(AddEditRecordActivity.EXTRA_TABLET, 0);
+            String timeRunning = data.getStringExtra(AddEditRecordActivity.EXTRA_TIME_RUNNING);
+            String waterTemp = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_TEMP);
 
             SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber,
                 timeRunning, waterTemp);
-          recordViewModel.insert(record);
+            recordViewModel.insert(record);
 
             Toast.makeText(this, "Record saved", Toast.LENGTH_SHORT).show();
-          } else {
+          }
+
+        else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK){
+            int id = data.getIntExtra(AddEditRecordActivity.EXTRA_ID, -1);
+
+            if (id == -1) {
+                Toast.makeText(this, "Record cannot be updated", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String collectionDate = data.getStringExtra(AddEditRecordActivity.EXTRA_COLLECTION_DATE);
+            String collectionTime = data.getStringExtra(AddEditRecordActivity.EXTRA_COLLECTION_TIME);
+            int tabletNumber = data.getIntExtra(AddEditRecordActivity.EXTRA_TABLET, 0);
+            String timeRunning = data.getStringExtra(AddEditRecordActivity.EXTRA_TIME_RUNNING);
+            String waterTemp = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_TEMP);
+
+            SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber, timeRunning, waterTemp);
+            record.setId(id);
+            recordViewModel.update(record);
+
+            Toast.makeText(this, "Record updated", Toast.LENGTH_SHORT).show();
+          }
+
+        else {
             Toast.makeText(this, "Record not saved", Toast.LENGTH_SHORT).show();
         }
     }

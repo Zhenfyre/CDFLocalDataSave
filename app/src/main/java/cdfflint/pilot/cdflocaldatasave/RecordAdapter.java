@@ -9,11 +9,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordHolder> {
+public class RecordAdapter extends ListAdapter<SQLRecord, RecordAdapter.RecordHolder> {
+    private OnItemClickListener listener;
 
-    private List<SQLRecord> records = new ArrayList<>();
+    public RecordAdapter() {
+        super(DIFF_CALLBACK);
+    }
+
+    private static final DiffUtil.ItemCallback<SQLRecord> DIFF_CALLBACK = new DiffUtil.ItemCallback<SQLRecord>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull SQLRecord oldItem, @NonNull SQLRecord newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull SQLRecord oldItem, @NonNull SQLRecord newItem) {
+            return oldItem.getCollectionDate().equals(newItem.getCollectionDate())
+                    && oldItem.getCollectionTime().equals(newItem.getCollectionTime()) &&
+                    oldItem.getTabletNumber() == newItem.getTabletNumber() &&
+                    oldItem.getTimeRunning().equals(newItem.getTimeRunning()) &&
+                    oldItem.getWaterTemp().equals(newItem.getWaterTemp());
+        }
+    };
 
     @NonNull
     @Override
@@ -25,24 +46,14 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordHold
 
     @Override
     public void onBindViewHolder(@NonNull RecordHolder holder, int position) {
-        SQLRecord currentRecord = records.get(position);
+        SQLRecord currentRecord = getItem(position);
         holder.textViewTablet.setText(String.valueOf(currentRecord.getTabletNumber()));
         holder.textViewDate.setText(currentRecord.getCollectionDate());
         holder.textViewTime.setText(currentRecord.getCollectionTime());
     }
 
-    @Override
-    public int getItemCount() {
-        return records.size();
-    }
-
-    public void setRecords(List<SQLRecord> records) {
-        this.records = records;
-        notifyDataSetChanged();
-    }
-
     public SQLRecord getRecordAt(int position){
-        return records.get(position);
+        return getItem(position);
     }
 
     class RecordHolder extends RecyclerView.ViewHolder{
@@ -55,6 +66,24 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordHold
             textViewTablet = itemView.findViewById(R.id.text_view_tablet);
             textViewDate = itemView.findViewById(R.id.text_view_date);
             textViewTime = itemView.findViewById(R.id.text_view_time);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION){
+                    listener.onItemClick(getItem(position));}
+                }
+            });
         }
     }
+
+    public interface OnItemClickListener{
+        void onItemClick(SQLRecord record);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
+
 }
