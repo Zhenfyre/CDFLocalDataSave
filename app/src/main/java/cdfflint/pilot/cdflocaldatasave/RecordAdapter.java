@@ -32,7 +32,25 @@ public class RecordAdapter extends ListAdapter<SQLRecord, RecordAdapter.RecordHo
                     && oldItem.getCollectionTime().equals(newItem.getCollectionTime()) &&
                     oldItem.getTabletNumber() == newItem.getTabletNumber() &&
                     oldItem.getTimeRunning().equals(newItem.getTimeRunning()) &&
-                    oldItem.getWaterTemp().equals(newItem.getWaterTemp());
+                    oldItem.getWaterTemp().equals(newItem.getWaterTemp()) &&
+                    oldItem.getNormalUse().equals(newItem.getNormalUse()) &&
+                    oldItem.getWaterColor().equals(newItem.getWaterColor()) &&
+                    oldItem.getWaterSmell().equals(newItem.getWaterSmell()) &&
+                    oldItem.getWaterTaste().equals(newItem.getWaterTaste()) &&
+                    oldItem.getRottenEgg().equals(newItem.getRottenEgg()) &&
+                    oldItem.getSedimentPresent().equals(newItem.getSedimentPresent()) &&
+                    oldItem.getSedimentFeathery().equals(newItem.getSedimentFeathery()) &&
+                    oldItem.getBacteriaResult().equals(newItem.getBacteriaResult()) &&
+                    oldItem.getHardnessPpm().equals(newItem.getHardnessPpm()) &&
+                    oldItem.getChlorinePpm().equals(newItem.getChlorinePpm()) &&
+                    oldItem.getAlkalinityPpm().equals(newItem.getAlkalinityPpm()) &&
+                    oldItem.getCopperPpm().equals(newItem.getCopperPpm()) &&
+                    oldItem.getIronPpm().equals(newItem.getIronPpm()) &&
+                    oldItem.getPhValue().equals(newItem.getPhValue()) &&
+                    oldItem.getPesticideResult().equals(newItem.getPesticideResult()) &&
+                    oldItem.getLeadResult().equals(newItem.getLeadResult()) &&
+                    oldItem.getNitriteResult().equals(newItem.getNitriteResult()) &&
+                    oldItem.getNitrateResult().equals(newItem.getNitrateResult());
         }
     };
 
@@ -52,11 +70,11 @@ public class RecordAdapter extends ListAdapter<SQLRecord, RecordAdapter.RecordHo
         holder.textViewTime.setText(currentRecord.getCollectionTime());
     }
 
-    public SQLRecord getRecordAt(int position){
+    public SQLRecord getRecordAt(int position) {
         return getItem(position);
     }
 
-    class RecordHolder extends RecyclerView.ViewHolder{
+    class RecordHolder extends RecyclerView.ViewHolder {
         private TextView textViewTablet;
         private TextView textViewDate;
         private TextView textViewTime;
@@ -71,18 +89,19 @@ public class RecordAdapter extends ListAdapter<SQLRecord, RecordAdapter.RecordHo
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
-                    if (listener != null && position != RecyclerView.NO_POSITION){
-                    listener.onItemClick(getItem(position));}
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(getItem(position));
+                    }
                 }
             });
         }
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(SQLRecord record);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 

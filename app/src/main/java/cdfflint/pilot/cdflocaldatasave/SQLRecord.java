@@ -14,7 +14,7 @@ public class SQLRecord {
     private int tabletNumber;
     private String timeRunning;
     private String waterTemp;
-/*    private String normalUse;
+    private String normalUse;
     private String waterColor;
     private String waterSmell;
     private String waterTaste;
@@ -31,24 +31,22 @@ public class SQLRecord {
     private String pesticideResult;
     private String leadResult;
     private String nitriteResult;
-    private String nitrateResult;*/
+    private String nitrateResult;
 
     public SQLRecord(String collectionDate, String collectionTime, int tabletNumber,
-                     String timeRunning, String waterTemp) {
-
-/*        , String normalUse, String waterColor,
-                String waterSmell, String waterTaste, String rottenEgg, String sedimentPresent,
-                String sedimentFeathery, String bacteriaResult, String hardnessPpm,
-                String chlorinePpm, String alkalinityPpm, String copperPpm, String ironPpm,
-                String phValue, String pesticideResult, String leadResult,
-                String nitriteResult, String nitrateResult*/
+                     String timeRunning, String waterTemp, String normalUse, String waterColor,
+                     String waterSmell, String waterTaste, String rottenEgg, String sedimentPresent,
+                     String sedimentFeathery, String bacteriaResult, String hardnessPpm,
+                     String chlorinePpm, String alkalinityPpm, String copperPpm, String ironPpm,
+                     String phValue, String pesticideResult, String leadResult,
+                     String nitriteResult, String nitrateResult) {
 
         this.collectionDate = collectionDate;
         this.collectionTime = collectionTime;
         this.tabletNumber = tabletNumber;
         this.timeRunning = timeRunning;
         this.waterTemp = waterTemp;
-/*        this.normalUse = normalUse;
+        this.normalUse = normalUse;
         this.waterColor = waterColor;
         this.waterSmell = waterSmell;
         this.waterTaste = waterTaste;
@@ -65,7 +63,7 @@ public class SQLRecord {
         this.pesticideResult = pesticideResult;
         this.leadResult = leadResult;
         this.nitriteResult = nitriteResult;
-        this.nitrateResult = nitrateResult;*/
+        this.nitrateResult = nitrateResult;
     }
 
     public void setId(int id) {
@@ -95,7 +93,7 @@ public class SQLRecord {
     public String getWaterTemp() {
         return waterTemp;
     }
-/*
+
     public String getNormalUse() {
         return normalUse;
     }
@@ -166,5 +164,5 @@ public class SQLRecord {
 
     public String getNitrateResult() {
         return nitrateResult;
-    }*/
+    }
 }

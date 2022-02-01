@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                    recordViewModel.delete(adapter.getRecordAt(viewHolder.getAdapterPosition()));
-                    Toast.makeText(MainActivity.this, "Record deleted", Toast.LENGTH_SHORT).show();
+                recordViewModel.delete(adapter.getRecordAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(MainActivity.this, "Record deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -80,6 +80,25 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddEditRecordActivity.EXTRA_TABLET, record.getTabletNumber());
                 intent.putExtra(AddEditRecordActivity.EXTRA_TIME_RUNNING, record.getTimeRunning());
                 intent.putExtra(AddEditRecordActivity.EXTRA_WATER_TEMP, record.getWaterTemp());
+                intent.putExtra(AddEditRecordActivity.EXTRA_NORMAL_USE, record.getNormalUse());
+                intent.putExtra(AddEditRecordActivity.EXTRA_WATER_COLOR, record.getWaterColor());
+                intent.putExtra(AddEditRecordActivity.EXTRA_WATER_SMELL, record.getWaterSmell());
+                intent.putExtra(AddEditRecordActivity.EXTRA_WATER_TASTE, record.getWaterTaste());
+                intent.putExtra(AddEditRecordActivity.EXTRA_ROTTEN_EGG, record.getRottenEgg());
+                intent.putExtra(AddEditRecordActivity.EXTRA_SEDIMENT_PRESENT, record.getSedimentPresent());
+                intent.putExtra(AddEditRecordActivity.EXTRA_SEDIMENT_FEATHERY, record.getSedimentFeathery());
+                intent.putExtra(AddEditRecordActivity.EXTRA_BACTERIA_RESULT, record.getBacteriaResult());
+                intent.putExtra(AddEditRecordActivity.EXTRA_HARDNESS_PPM, record.getHardnessPpm());
+                intent.putExtra(AddEditRecordActivity.EXTRA_CHLORINE_PPM, record.getChlorinePpm());
+                intent.putExtra(AddEditRecordActivity.EXTRA_ALKALINITY_PPM, record.getAlkalinityPpm());
+                intent.putExtra(AddEditRecordActivity.EXTRA_COPPER_PPM, record.getCopperPpm());
+                intent.putExtra(AddEditRecordActivity.EXTRA_IRON_PPM, record.getIronPpm());
+                intent.putExtra(AddEditRecordActivity.EXTRA_PH_VALUE, record.getPhValue());
+                intent.putExtra(AddEditRecordActivity.EXTRA_PESTICIDE_RESULT, record.getPesticideResult());
+                intent.putExtra(AddEditRecordActivity.EXTRA_LEAD_RESULT, record.getLeadResult());
+                intent.putExtra(AddEditRecordActivity.EXTRA_NITRITE_RESULT, record.getNitriteResult());
+                intent.putExtra(AddEditRecordActivity.EXTRA_NITRATE_RESULT, record.getNitrateResult());
+
                 startActivityForResult(intent, EDIT_NOTE_REQUEST);
             }
         });
@@ -89,21 +108,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK){
+        if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK) {
             String collectionDate = data.getStringExtra(AddEditRecordActivity.EXTRA_COLLECTION_DATE);
             String collectionTime = data.getStringExtra(AddEditRecordActivity.EXTRA_COLLECTION_TIME);
             int tabletNumber = data.getIntExtra(AddEditRecordActivity.EXTRA_TABLET, 0);
             String timeRunning = data.getStringExtra(AddEditRecordActivity.EXTRA_TIME_RUNNING);
             String waterTemp = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_TEMP);
+            String normalUse = data.getStringExtra(AddEditRecordActivity.EXTRA_NORMAL_USE);
+            String waterColor = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_COLOR);
+            String waterSmell = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_SMELL);
+            String waterTaste = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_TASTE);
+            String rottenEgg = data.getStringExtra(AddEditRecordActivity.EXTRA_ROTTEN_EGG);
+            String sedimentPresent = data.getStringExtra(AddEditRecordActivity.EXTRA_SEDIMENT_PRESENT);
+            String sedimentFeathery = data.getStringExtra(AddEditRecordActivity.EXTRA_SEDIMENT_FEATHERY);
+            String bacteriaResult = data.getStringExtra(AddEditRecordActivity.EXTRA_BACTERIA_RESULT);
+            String hardnessPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_HARDNESS_PPM);
+            String chlorinePpm = data.getStringExtra(AddEditRecordActivity.EXTRA_CHLORINE_PPM);
+            String alkalinityPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_ALKALINITY_PPM);
+            String copperPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_COPPER_PPM);
+            String ironPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_IRON_PPM);
+            String phValue = data.getStringExtra(AddEditRecordActivity.EXTRA_PH_VALUE);
+            String pesticideResult = data.getStringExtra(AddEditRecordActivity.EXTRA_PESTICIDE_RESULT);
+            String leadResult = data.getStringExtra(AddEditRecordActivity.EXTRA_LEAD_RESULT);
+            String nitriteResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRITE_RESULT);
+            String nitrateResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRATE_RESULT);
 
             SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber,
-                timeRunning, waterTemp);
+                    timeRunning, waterTemp, normalUse, waterColor, waterSmell, waterTaste,
+                    rottenEgg, sedimentPresent, sedimentFeathery, bacteriaResult, hardnessPpm,
+                    chlorinePpm, alkalinityPpm, copperPpm, ironPpm, phValue, pesticideResult,
+                    leadResult, nitriteResult, nitrateResult);
             recordViewModel.insert(record);
 
             Toast.makeText(this, "Record saved", Toast.LENGTH_SHORT).show();
-          }
-
-        else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK){
+        } else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK) {
             int id = data.getIntExtra(AddEditRecordActivity.EXTRA_ID, -1);
 
             if (id == -1) {
@@ -116,16 +154,36 @@ public class MainActivity extends AppCompatActivity {
             int tabletNumber = data.getIntExtra(AddEditRecordActivity.EXTRA_TABLET, 0);
             String timeRunning = data.getStringExtra(AddEditRecordActivity.EXTRA_TIME_RUNNING);
             String waterTemp = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_TEMP);
+            String normalUse = data.getStringExtra(AddEditRecordActivity.EXTRA_NORMAL_USE);
+            String waterColor = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_COLOR);
+            String waterSmell = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_SMELL);
+            String waterTaste = data.getStringExtra(AddEditRecordActivity.EXTRA_WATER_TASTE);
+            String rottenEgg = data.getStringExtra(AddEditRecordActivity.EXTRA_ROTTEN_EGG);
+            String sedimentPresent = data.getStringExtra(AddEditRecordActivity.EXTRA_SEDIMENT_PRESENT);
+            String sedimentFeathery = data.getStringExtra(AddEditRecordActivity.EXTRA_SEDIMENT_FEATHERY);
+            String bacteriaResult = data.getStringExtra(AddEditRecordActivity.EXTRA_BACTERIA_RESULT);
+            String hardnessPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_HARDNESS_PPM);
+            String chlorinePpm = data.getStringExtra(AddEditRecordActivity.EXTRA_CHLORINE_PPM);
+            String alkalinityPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_ALKALINITY_PPM);
+            String copperPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_COPPER_PPM);
+            String ironPpm = data.getStringExtra(AddEditRecordActivity.EXTRA_IRON_PPM);
+            String phValue = data.getStringExtra(AddEditRecordActivity.EXTRA_PH_VALUE);
+            String pesticideResult = data.getStringExtra(AddEditRecordActivity.EXTRA_PESTICIDE_RESULT);
+            String leadResult = data.getStringExtra(AddEditRecordActivity.EXTRA_LEAD_RESULT);
+            String nitriteResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRITE_RESULT);
+            String nitrateResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRATE_RESULT);
 
-            SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber, timeRunning, waterTemp);
+            SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber,
+                    timeRunning, waterTemp, normalUse, waterColor, waterSmell, waterTaste,
+                    rottenEgg, sedimentPresent, sedimentFeathery, bacteriaResult, hardnessPpm,
+                    chlorinePpm, alkalinityPpm, copperPpm, ironPpm, phValue, pesticideResult,
+                    leadResult, nitriteResult, nitrateResult);
             record.setId(id);
             recordViewModel.update(record);
 
             Toast.makeText(this, "Record updated", Toast.LENGTH_SHORT).show();
-          }
-
-        else {
-            Toast.makeText(this, "Record not saved", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Record closed without saving", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -138,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.delete_all_records:
                 recordViewModel.deleteAllRecords();
                 Toast.makeText(this, "All records deleted", Toast.LENGTH_SHORT).show();

@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {SQLRecord.class}, version = 2)
+@Database(entities = {SQLRecord.class}, version = 3)
 public abstract class RecordDatabase extends RoomDatabase {
 
     private static RecordDatabase instance;
@@ -45,18 +45,26 @@ public abstract class RecordDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             recordDao.insert(new SQLRecord("01/01/2000","12:00pm",
-                    0,"0", "Temp"));
-            recordDao.insert(new SQLRecord("01/02/2000","12:00pm",
-                    0,"0", "Temp"));
-            recordDao.insert(new SQLRecord("01/03/2000","12:00pm",
-                    0,"0", "Temp"));
-            /*
-            , "Use",
+                    0,"0", "Temp", "Use",
                     "Color","Smell","Taste", "Rotten Egg",
                     "Sediment","Feathery", "Bacteria",
                     "Hardness","Chlorine","Alkalinity",
                     "Copper","Iron","pH","Pesticides",
-                    "Lead","Nitrite", "Nitrate"*/
+                    "Lead","Nitrite", "Nitrate"));
+            recordDao.insert(new SQLRecord("01/02/2000","12:00pm",
+                    0,"0", "Temp", "Use",
+                    "Color","Smell","Taste", "Rotten Egg",
+                    "Sediment","Feathery", "Bacteria",
+                    "Hardness","Chlorine","Alkalinity",
+                    "Copper","Iron","pH","Pesticides",
+                    "Lead","Nitrite", "Nitrate"));
+            recordDao.insert(new SQLRecord("01/03/2000","12:00pm",
+                    0,"0", "Temp", "Use",
+                    "Color","Smell","Taste", "Rotten Egg",
+                    "Sediment","Feathery", "Bacteria",
+                    "Hardness","Chlorine","Alkalinity",
+                    "Copper","Iron","pH","Pesticides",
+                    "Lead","Nitrite", "Nitrate"));
             return null;
         }
     }

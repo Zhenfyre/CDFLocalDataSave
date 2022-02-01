@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".AddEditRecordActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tablet_number"
         android:textSize="20sp"
-        android:text="Tablet Number:"/>
+        android:text="@string/tablet_number_text"/>
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -51,4 +55,150 @@
         android:textSize="20sp"
         android:textColor="#575757" />
 
-</LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/normal_use"
+        android:hint="@string/normal_use"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/water_color"
+        android:hint="@string/water_appearance"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/water_smell"
+        android:hint="@string/water_smell"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/water_taste"
+        android:hint="@string/water_taste_description"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rotten_egg"
+        android:hint="@string/rottenEgg_smell"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sediment_present"
+        android:hint="@string/sediment"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sediment_feathery"
+        android:hint="@string/feathery"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bacteria_result"
+        android:hint="@string/bacteria"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hardness_ppm"
+        android:hint="@string/total_hardness"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chlorine_ppm"
+        android:hint="@string/total_chlorine"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/alkalinity_ppm"
+        android:hint="@string/alkalinity"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/copper_ppm"
+        android:hint="@string/copper"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iron_ppm"
+        android:hint="@string/iron"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ph_value"
+        android:hint="@string/ph"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pesticide_result"
+        android:hint="@string/pesticide"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lead_result"
+        android:hint="@string/lead"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nitrite_result"
+        android:hint="@string/nitrite"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nitrate_result"
+        android:hint="@string/nitrate"
+        android:textSize="20sp"
+        android:textColor="#575757" />
+
+    </LinearLayout>
+
+</ScrollView>

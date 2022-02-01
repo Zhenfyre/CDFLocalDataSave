@@ -46,25 +46,25 @@
     <string name="select_one">select one</string>
     <string name="nitrate">Nitrate</string>
     <string name="nitrite">Nitrite</string>
-    <string name="ph">pH = </string>
+    <string name="ph">pH</string>
     <string name="alkalinity">Alkalinity</string>
     <string name="total_chlorine">Total Chlorine</string>
     <string name="total_hardness">Total Hardness</string>
     <string name="type_description">type description</string>
     <string name="water_taste">Only if you feel comfortable drinking the water, describe the taste of the water:</string>
     <string name="water_smell">Describe the smell of the water:</string>
-    <string name="water_appearance">Describe the color/appearance of the water:</string>
+    <string name="water_appearance">Describe the color of the water:</string>
     <string name="temperature">Temperature of water achieved before collection:</string>
 
     <string name="time_running">How long did you run the water before collecting your sample (1 min = 60 seconds)?</string>
-    <string name="normal_use">What do you normally use water from the bathroom sink for? Check all that apply or None. </string>
+    <string name="normal_use">What do you normally use water for?</string>
     <string name="page_title">Report Water Testing Results</string>
     <string name="bacteria">Bacteria</string>
     <string name="pesticide">Pesticide</string>
     <string name="lead">Lead</string>
     <string name="rottenEgg_smell">Does the water have a rotten egg odor?</string>
-    <string name="sediment">Is there sediment in the bottom of the container?</string>
-    <string name="feathery">Does the sediment have a feathery appearance?</string>
+    <string name="sediment">Is there sediment in the bottom?</string>
+    <string name="feathery">Is the sediment feathery?</string>
     <string name="drinking">Drinking</string>
     <string name="brushing_teeth">Brushing Teeth</string>
     <string name="handwashing">Handwashing</string>
@@ -111,4 +111,5 @@
     <string name="mm_dd_yyyy">Date: MM/DD/YYYY</string>
     <string name="default_time">0 seconds</string>
     <string name="water_temp">Temperature achieved</string>
+    <string name="tablet_number_text">Tablet Number</string>
 </resources>
