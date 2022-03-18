@@ -1,0 +1,172 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "0f854581084009ec262979f51ef80341",
+    "entities": [
+      {
+        "tableName": "record_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `collectionDate` TEXT, `collectionTime` TEXT, `tabletNumber` INTEGER NOT NULL, `timeRunning` TEXT, `waterTemp` TEXT, `normalUse` TEXT, `waterColor` TEXT, `waterSmell` TEXT, `waterTaste` TEXT, `rottenEgg` TEXT, `sedimentPresent` TEXT, `sedimentFeathery` TEXT, `bacteriaResult` TEXT, `hardnessPpm` TEXT, `chlorinePpm` TEXT, `alkalinityPpm` TEXT, `copperPpm` TEXT, `ironPpm` TEXT, `phValue` TEXT, `pesticideResult` TEXT, `leadResult` TEXT, `nitriteResult` TEXT, `nitrateResult` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "collectionDate",
+            "columnName": "collectionDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "collectionTime",
+            "columnName": "collectionTime",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tabletNumber",
+            "columnName": "tabletNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeRunning",
+            "columnName": "timeRunning",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "waterTemp",
+            "columnName": "waterTemp",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "normalUse",
+            "columnName": "normalUse",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "waterColor",
+            "columnName": "waterColor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "waterSmell",
+            "columnName": "waterSmell",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "waterTaste",
+            "columnName": "waterTaste",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rottenEgg",
+            "columnName": "rottenEgg",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sedimentPresent",
+            "columnName": "sedimentPresent",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sedimentFeathery",
+            "columnName": "sedimentFeathery",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "bacteriaResult",
+            "columnName": "bacteriaResult",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hardnessPpm",
+            "columnName": "hardnessPpm",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "chlorinePpm",
+            "columnName": "chlorinePpm",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alkalinityPpm",
+            "columnName": "alkalinityPpm",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "copperPpm",
+            "columnName": "copperPpm",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ironPpm",
+            "columnName": "ironPpm",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "phValue",
+            "columnName": "phValue",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pesticideResult",
+            "columnName": "pesticideResult",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "leadResult",
+            "columnName": "leadResult",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nitriteResult",
+            "columnName": "nitriteResult",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nitrateResult",
+            "columnName": "nitrateResult",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0f854581084009ec262979f51ef80341')"
+    ]
+  }
+}
