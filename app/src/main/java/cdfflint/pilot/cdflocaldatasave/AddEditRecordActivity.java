@@ -3,6 +3,7 @@ package cdfflint.pilot.cdflocaldatasave;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -228,7 +229,6 @@ public class AddEditRecordActivity extends AppCompatActivity {
             data.putExtra(EXTRA_ID, id);
         }
 
-        addItemToSheet();
         setResult(RESULT_OK, data);
         finish();
     }
@@ -245,6 +245,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.save_record:
                 saveRecord();
+                addItemToSheet();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -252,48 +253,40 @@ public class AddEditRecordActivity extends AppCompatActivity {
     }
 
     private void   addItemToSheet() {
-
-        final ProgressDialog loading = ProgressDialog.show(this,"Adding Item","Please wait");
-        final String name = editTextDate.getText().toString().trim();
-        final String brand = editTextTimeCollected.getText().toString().trim();
-
+        int tabletNumber = numberPickerTablet.getValue();
+        final String tabletNumberSend = Integer.toString(tabletNumber);
+        final String dateCollectedSend = editTextDate.getText().toString().trim();
+        final String timeCollectedSend = editTextTimeCollected.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 "https://script.google.com/macros/s/AKfycbwcVyN68rIpSqCdfEbk9IuPGD7hlS0tOo9vDsd1dO7rd1dir1wQ1AaR68NbaWPgDmEnZg/exec",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
-                        loading.dismiss();
-                        Toast.makeText(AddEditRecordActivity.this,response,Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         startActivity(intent);
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 }
         ) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> parmas = new HashMap<>();
+                Map<String, String> paramsMap = new HashMap<>();
 
-                //here we pass params
-                parmas.put("action","addItem");
-                parmas.put("participantId",name);
-                parmas.put("dateCollected",brand);
+                paramsMap.put("action","addItem");
+                paramsMap.put("participantId",tabletNumberSend);
+                paramsMap.put("dateCollected",dateCollectedSend);
+                paramsMap.put("timeCollected",timeCollectedSend);
 
-                return parmas;
+                return paramsMap;
             }
-
-
         };
 
-        int socketTimeOut = 50000;// u can change this .. here it is 50 seconds
+        int socketTimeOut = 50000;
 
         RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
@@ -302,9 +295,6 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
         queue.add(stringRequest);
 
-
-
     }
-
 
 }
