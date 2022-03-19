@@ -131,8 +131,10 @@ public class AddEditRecordActivity extends AppCompatActivity {
         editTextNitriteResult = findViewById(R.id.nitrite_result);
         editTextNitrateResult = findViewById(R.id.nitrate_result);
 
+        TabletNumbers.initNumbers();
         numberPickerTablet.setMinValue(0);
-        numberPickerTablet.setMaxValue(32);
+        numberPickerTablet.setMaxValue(TabletNumbers.getTabletArrayList().size()-1);
+        numberPickerTablet.setDisplayedValues(TabletNumbers.numberList());
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         Intent intent = getIntent();
