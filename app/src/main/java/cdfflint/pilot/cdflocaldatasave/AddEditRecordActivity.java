@@ -231,6 +231,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
             data.putExtra(EXTRA_ID, id);
         }
 
+        addItemToSheet();
         setResult(RESULT_OK, data);
         finish();
     }
@@ -247,7 +248,6 @@ public class AddEditRecordActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.save_record:
                 saveRecord();
-                addItemToSheet();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -7,4 +7,29 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+        <!-- Primary color of the app (shown in the app bar) -->
+        <color name="primary_color">#12005E</color>
+
+        <!-- Primary dark color of the app (shown in the status bar) -->
+        <color name="primary_dark_color">#212121</color>
+
+        <!-- Background color for app -->
+        <color name="light_background">#A6DFE1</color>
+
+        <!-- Background color for the landing category -->
+        <color name="category_landing">#9381FF</color>
+
+        <!-- Background color for the collection category -->
+        <color name="category_collection">#B8B8FF</color>
+
+        <!-- Background color for the aesthetics members category -->
+        <color name="category_aesthetics">#F8F7FF</color>
+
+        <!-- Background color for the bacteria category -->
+        <color name="category_bacteria">#FFEEDD</color>
+
+        <!-- Background color for the Test Strips category -->
+        <color name="category_testStrips">#FFD8BE</color>
+
 </resources>

@@ -12,56 +12,108 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tablet_number"
+                    android:textSize="24sp"
+                    android:text="@string/tablet_number_text"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="12dp"/>
+
+                <NumberPicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:id="@+id/number_picker_tablet"
+                    android:theme="@style/NumberPickerTheme"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:id="@+id/collectionDate"
+                    android:textSize="24sp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|start"
+                    android:padding="12dp"
+                    android:hint="@string/date_of_collection"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:id="@+id/time_of_day"
+                    android:textSize="24sp"
+                    android:layout_weight="1"
+                    android:padding="12dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:hint="@string/time_of_collection"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tablet_number"
-        android:textSize="20sp"
-        android:text="@string/tablet_number_text"/>
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
 
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/number_picker_tablet"
-        />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_running_water"
+            android:hint="@string/default_time"
+            android:textSize="20sp"
+            android:gravity="bottom"
+            android:inputType="number"
+            android:layout_margin="8dp"
+            android:textColor="#575757" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/collectionDate"
-        android:textSize="20sp"
-        android:hint="@string/mm_dd_yyyy"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/temp_achieved"
+            android:hint="@string/water_temp"
+            android:textSize="20sp"
+            android:layout_margin="8dp"
+            android:gravity="bottom"
+            android:textColor="#575757" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/time_of_day"
-        android:textSize="20sp"
-        android:hint="@string/hh_mm_am_pm"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/normal_use"
+            android:hint="@string/normal_use"
+            android:gravity="bottom"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textColor="#575757" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/time_running_water"
-        android:hint="@string/default_time"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/temp_achieved"
-        android:hint="@string/water_temp"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/normal_use"
-        android:hint="@string/normal_use"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+    </LinearLayout>
 
     <EditText
         android:layout_width="match_parent"
@@ -85,119 +137,211 @@
         android:id="@+id/water_taste"
         android:hint="@string/water_taste_description"
         android:textSize="20sp"
-        android:textColor="#575757" />
+        android:textColor="#575757"
+        android:layout_marginBottom="20dp"/>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rotten_egg"
-        android:hint="@string/rottenEgg_smell"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
 
-    <EditText
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/rotten_egg"
+            android:hint="@string/rottenEgg_smell"
+            android:textSize="20sp"
+            android:gravity="center_horizontal|bottom"
+            android:layout_margin="8dp"
+            android:textColor="#575757" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/sediment_present"
+            android:hint="@string/sediment"
+            android:textSize="20sp"
+            android:gravity="center_horizontal|bottom"
+            android:layout_margin="8dp"
+            android:textColor="#575757" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/sediment_feathery"
+            android:hint="@string/feathery"
+            android:gravity="center_horizontal|bottom"
+            android:textSize="20sp"
+            android:layout_margin="8dp"
+            android:textColor="#575757" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sediment_present"
-        android:hint="@string/sediment"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
 
-    <EditText
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/bacteria_result"
+            android:hint="@string/bacteria"
+            android:textSize="20sp"
+            android:textColor="#575757"
+            android:paddingRight="24dp"
+            android:layout_margin="8dp"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/ph_value"
+            android:hint="@string/ph"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:layout_margin="8dp"
+            android:textColor="#575757" />
+
+    </LinearLayout>
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sediment_feathery"
-        android:hint="@string/feathery"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
 
-    <EditText
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/hardness_ppm"
+            android:hint="@string/total_hardness"
+            android:layout_margin="8dp"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:textColor="#575757" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/chlorine_ppm"
+            android:hint="@string/total_chlorine"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textColor="#575757" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/alkalinity_ppm"
+            android:hint="@string/alkalinity"
+            android:layout_margin="8dp"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:textColor="#575757" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/copper_ppm"
+                android:hint="@string/copper"
+                android:layout_margin="8dp"
+                android:textSize="20sp"
+                android:textColor="#575757" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/iron_ppm"
+                android:hint="@string/iron"
+                android:layout_margin="8dp"
+                android:textSize="20sp"
+                android:textColor="#575757" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:layout_height="wrap_content">
+            </View>
+
+        </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bacteria_result"
-        android:hint="@string/bacteria"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
 
-    <EditText
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/pesticide_result"
+            android:hint="@string/pesticide"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textColor="#575757" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/lead_result"
+            android:hint="@string/lead"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textColor="#575757" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/hardness_ppm"
-        android:hint="@string/total_hardness"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/chlorine_ppm"
-        android:hint="@string/total_chlorine"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/nitrite_result"
+            android:hint="@string/nitrite"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textColor="#575757" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/alkalinity_ppm"
-        android:hint="@string/alkalinity"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/copper_ppm"
-        android:hint="@string/copper"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/iron_ppm"
-        android:hint="@string/iron"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ph_value"
-        android:hint="@string/ph"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pesticide_result"
-        android:hint="@string/pesticide"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lead_result"
-        android:hint="@string/lead"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nitrite_result"
-        android:hint="@string/nitrite"
-        android:textSize="20sp"
-        android:textColor="#575757" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nitrate_result"
-        android:hint="@string/nitrate"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/nitrate_result"
+            android:hint="@string/nitrate"
+            android:layout_margin="8dp"
+            android:textSize="20sp"
+            android:textColor="#575757" />
+    </LinearLayout>
 
     </LinearLayout>
 

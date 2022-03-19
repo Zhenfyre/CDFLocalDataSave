@@ -57,14 +57,14 @@
     <string name="temperature">Temperature of water achieved before collection:</string>
 
     <string name="time_running">How long did you run the water before collecting your sample (1 min = 60 seconds)?</string>
-    <string name="normal_use">What do you normally use water for?</string>
+    <string name="normal_use">Water normally used for...?</string>
     <string name="page_title">Report Water Testing Results</string>
-    <string name="bacteria">Bacteria</string>
+    <string name="bacteria">Bacteria Result</string>
     <string name="pesticide">Pesticide</string>
     <string name="lead">Lead</string>
-    <string name="rottenEgg_smell">Does the water have a rotten egg odor?</string>
-    <string name="sediment">Is there sediment in the bottom?</string>
-    <string name="feathery">Is the sediment feathery?</string>
+    <string name="rottenEgg_smell">Rotten egg odor?</string>
+    <string name="sediment">Sediment in bottom?</string>
+    <string name="feathery">Sediment feathery?</string>
     <string name="drinking">Drinking</string>
     <string name="brushing_teeth">Brushing Teeth</string>
     <string name="handwashing">Handwashing</string>
@@ -77,7 +77,7 @@
     <string name="cold">Cold</string>
     <string name="water_color_description">The water is \u0020 \u0020 ... \u0020 \u0020 in color</string>
     <string name="water_smell_description">The water smells like...</string>
-    <string name="water_taste_description">The water tastes...</string>
+    <string name="water_taste_description">The water tastes...?</string>
     <string name="enter_ppm">\u0020 \u0020 \u0020 \u0020 \u0020 \u0020  ppm</string>
     <string name="enter_pH"> \u0020 \u0020 \u0020 \u0020 \u0020 \u0020 \u0020 </string>
     <string name="safe">Safe</string>
@@ -106,10 +106,10 @@
     <string name="email_address">communitydrivenflint@gmail.com</string>
     <string name="thank_you">Lastly, click the send arrow in the top right!</string>
 
-    <string name="hh_mm_am_pm">Time of Collection: hh:mm am/pm</string>
+    <string name="hh_mm_am_pm">Time of Collection</string>
     <string name="tablet_number">Tablet Number: 000</string>
-    <string name="mm_dd_yyyy">Date: MM/DD/YYYY</string>
-    <string name="default_time">0 seconds</string>
-    <string name="water_temp">Temperature achieved</string>
+    <string name="mm_dd_yyyy">Date Collected</string>
+    <string name="default_time">Seconds running before collection</string>
+    <string name="water_temp">Water Temperature</string>
     <string name="tablet_number_text">Tablet Number</string>
 </resources>
