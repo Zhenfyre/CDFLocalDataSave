@@ -254,12 +254,40 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
     private void   addItemToSheet() {
         int tabletNumber = numberPickerTablet.getValue();
-        final String tabletNumberSend = Integer.toString(tabletNumber);
+        String tabletNumberGet = Integer.toString(tabletNumber);
+        final String tabletNumberSend;
+        if (tabletNumber < 10) {
+            tabletNumberSend = "'00" + tabletNumberGet;
+        } else if (tabletNumber < 100) {
+            tabletNumberSend = "'0" + tabletNumberGet;
+        } else tabletNumberSend =  tabletNumberGet;
+
         final String dateCollectedSend = editTextDate.getText().toString().trim();
         final String timeCollectedSend = editTextTimeCollected.getText().toString().trim();
+        final String timeRunningSend = editTextTimeRunning.getText().toString().trim();
+        final String waterTempSend = editTextTemp.getText().toString().trim();
+        final String normalUseSend = editTextNormalUse.getText().toString().trim();
+        final String waterColorSend = editTextWaterColor.getText().toString().trim();
+        final String waterSmellSend = editTextWaterSmell.getText().toString().trim();
+        final String waterTasteSend = editTextWaterTaste.getText().toString().trim();
+        final String rottenEggSend = editTextRottenEgg.getText().toString().trim();
+        final String sedimentPresentSend = editTextSedimentPresent.getText().toString().trim();
+        final String sedimentFeatherySend = editTextSedimentFeathery.getText().toString().trim();
+        final String bacteriaResultSend = editTextBacteriaResult.getText().toString().trim();
+        final String hardnessPpmSend = editTextHardnessPpm.getText().toString().trim();
+        final String chlorinePpmSend = editTextChlorinePpm.getText().toString().trim();
+        final String alkalinityPpmSend = editTextAlkalinityPpm.getText().toString().trim();
+        final String copperPpmSend = editTextCopperPpm.getText().toString().trim();
+        final String ironPpmSend = editTextIronPpm.getText().toString().trim();
+        final String phValueSend = editTextPhValue.getText().toString().trim();
+        final String pesticideResultSend = editTextPesticideResult.getText().toString().trim();
+        final String leadResultSend = editTextLeadResult.getText().toString().trim();
+        final String nitriteResultSend = editTextNitriteResult.getText().toString().trim();
+        final String nitrateResultSend = editTextNitrateResult.getText().toString().trim();
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                "https://script.google.com/macros/s/AKfycbwcVyN68rIpSqCdfEbk9IuPGD7hlS0tOo9vDsd1dO7rd1dir1wQ1AaR68NbaWPgDmEnZg/exec",
+                "https://script.google.com/macros/s/AKfycbwVOKSgVxhTbl4FpkorCU73doMw6bgZn8Yb-f5eXweBsZgw-zDL9Y09-LZK7cq1TIF-OA/exec",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -281,6 +309,26 @@ public class AddEditRecordActivity extends AppCompatActivity {
                 paramsMap.put("participantId",tabletNumberSend);
                 paramsMap.put("dateCollected",dateCollectedSend);
                 paramsMap.put("timeCollected",timeCollectedSend);
+                paramsMap.put("timeRunning",timeRunningSend);
+                paramsMap.put("waterTemp",waterTempSend);
+                paramsMap.put("normalUse",normalUseSend);
+                paramsMap.put("waterColor",waterColorSend);
+                paramsMap.put("waterSmell",waterSmellSend);
+                paramsMap.put("waterTaste",waterTasteSend);
+                paramsMap.put("rottenEgg",rottenEggSend);
+                paramsMap.put("sedimentPresent",sedimentPresentSend);
+                paramsMap.put("sedimentFeathery",sedimentFeatherySend);
+                paramsMap.put("bacteriaResult",bacteriaResultSend);
+                paramsMap.put("hardnessPpm",hardnessPpmSend);
+                paramsMap.put("chlorinePpm",chlorinePpmSend);
+                paramsMap.put("alkalinityPpm",alkalinityPpmSend);
+                paramsMap.put("copperPpm",copperPpmSend);
+                paramsMap.put("ironPpm",ironPpmSend);
+                paramsMap.put("phValue",phValueSend);
+                paramsMap.put("pesticideResult",pesticideResultSend);
+                paramsMap.put("leadResult",leadResultSend);
+                paramsMap.put("nitriteResult",nitriteResultSend);
+                paramsMap.put("nitrateResult",nitrateResultSend);
 
                 return paramsMap;
             }
