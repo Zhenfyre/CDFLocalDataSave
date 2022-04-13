@@ -50,7 +50,12 @@ public class RecordAdapter extends ListAdapter<SQLRecord, RecordAdapter.RecordHo
                     oldItem.getPesticideResult().equals(newItem.getPesticideResult()) &&
                     oldItem.getLeadResult().equals(newItem.getLeadResult()) &&
                     oldItem.getNitriteResult().equals(newItem.getNitriteResult()) &&
-                    oldItem.getNitrateResult().equals(newItem.getNitrateResult());
+                    oldItem.getNitrateResult().equals(newItem.getNitrateResult()) &&
+                    oldItem.getLatitude().equals(newItem.getLatitude()) &&
+                    oldItem.getLongitude().equals(newItem.getLongitude()) &&
+                    oldItem.getLocality().equals(newItem.getLocality()) &&
+                    oldItem.getZipCode().equals(newItem.getZipCode()) &&
+                    oldItem.getAddress().equals(newItem.getAddress());
         }
     };
 

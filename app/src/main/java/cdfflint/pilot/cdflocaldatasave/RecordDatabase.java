@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {SQLRecord.class}, version = 4, exportSchema = false)
+@Database(entities = {SQLRecord.class}, version = 5, exportSchema = false)
 public abstract class RecordDatabase extends RoomDatabase {
 
     private static RecordDatabase instance;
@@ -50,21 +50,24 @@ public abstract class RecordDatabase extends RoomDatabase {
                     "Sediment","Feathery", "Bacteria",
                     "Hardness","Chlorine","Alkalinity",
                     "Copper","Iron","pH","Pesticides",
-                    "Lead","Nitrite", "Nitrate"));
+                    "Lead","Nitrite", "Nitrate", "Latitude",
+                     "Longitude", "Locality", "ZipCode", "Address"));
             recordDao.insert(new SQLRecord("01/02/2000","12:00pm",
                     0,"0", "Temp", "Use",
                     "Color","Smell","Taste", "Rotten Egg",
                     "Sediment","Feathery", "Bacteria",
                     "Hardness","Chlorine","Alkalinity",
                     "Copper","Iron","pH","Pesticides",
-                    "Lead","Nitrite", "Nitrate"));
+                    "Lead","Nitrite", "Nitrate", "Latitude",
+                    "Longitude", "Locality", "ZipCode", "Address"));
             recordDao.insert(new SQLRecord("01/03/2000","12:00pm",
                     0,"0", "Temp", "Use",
                     "Color","Smell","Taste", "Rotten Egg",
                     "Sediment","Feathery", "Bacteria",
                     "Hardness","Chlorine","Alkalinity",
                     "Copper","Iron","pH","Pesticides",
-                    "Lead","Nitrite", "Nitrate"));
+                    "Lead","Nitrite", "Nitrate", "Latitude",
+                    "Longitude", "Locality", "ZipCode", "Address"));
             return null;
         }
     }

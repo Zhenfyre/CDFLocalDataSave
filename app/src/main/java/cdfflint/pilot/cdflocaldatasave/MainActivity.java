@@ -98,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddEditRecordActivity.EXTRA_LEAD_RESULT, record.getLeadResult());
                 intent.putExtra(AddEditRecordActivity.EXTRA_NITRITE_RESULT, record.getNitriteResult());
                 intent.putExtra(AddEditRecordActivity.EXTRA_NITRATE_RESULT, record.getNitrateResult());
+                intent.putExtra(AddEditRecordActivity.EXTRA_LATITUDE, record.getLatitude());
+                intent.putExtra(AddEditRecordActivity.EXTRA_LONGITUDE, record.getLongitude());
+                intent.putExtra(AddEditRecordActivity.EXTRA_LOCALITY, record.getLocality());
+                intent.putExtra(AddEditRecordActivity.EXTRA_ZIPCODE, record.getZipCode());
+                intent.putExtra(AddEditRecordActivity.EXTRA_ADDRESS, record.getAddress());
 
                 startActivityForResult(intent, EDIT_NOTE_REQUEST);
             }
@@ -132,12 +137,18 @@ public class MainActivity extends AppCompatActivity {
             String leadResult = data.getStringExtra(AddEditRecordActivity.EXTRA_LEAD_RESULT);
             String nitriteResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRITE_RESULT);
             String nitrateResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRATE_RESULT);
+            String latitude = data.getStringExtra(AddEditRecordActivity.EXTRA_LATITUDE);
+            String longitude = data.getStringExtra(AddEditRecordActivity.EXTRA_LONGITUDE);
+            String locality = data.getStringExtra(AddEditRecordActivity.EXTRA_LOCALITY);
+            String zipCode = data.getStringExtra(AddEditRecordActivity.EXTRA_ZIPCODE);
+            String address = data.getStringExtra(AddEditRecordActivity.EXTRA_ADDRESS);
 
             SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber,
                     timeRunning, waterTemp, normalUse, waterColor, waterSmell, waterTaste,
                     rottenEgg, sedimentPresent, sedimentFeathery, bacteriaResult, hardnessPpm,
                     chlorinePpm, alkalinityPpm, copperPpm, ironPpm, phValue, pesticideResult,
-                    leadResult, nitriteResult, nitrateResult);
+                    leadResult, nitriteResult, nitrateResult, latitude, longitude, locality,
+                    zipCode, address);
             recordViewModel.insert(record);
 
             Toast.makeText(this, "Record saved", Toast.LENGTH_SHORT).show();
@@ -172,12 +183,18 @@ public class MainActivity extends AppCompatActivity {
             String leadResult = data.getStringExtra(AddEditRecordActivity.EXTRA_LEAD_RESULT);
             String nitriteResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRITE_RESULT);
             String nitrateResult = data.getStringExtra(AddEditRecordActivity.EXTRA_NITRATE_RESULT);
+            String latitude = data.getStringExtra(AddEditRecordActivity.EXTRA_LATITUDE);
+            String longitude = data.getStringExtra(AddEditRecordActivity.EXTRA_LONGITUDE);
+            String locality = data.getStringExtra(AddEditRecordActivity.EXTRA_LOCALITY);
+            String zipCode = data.getStringExtra(AddEditRecordActivity.EXTRA_ZIPCODE);
+            String address = data.getStringExtra(AddEditRecordActivity.EXTRA_ADDRESS);
 
             SQLRecord record = new SQLRecord(collectionDate, collectionTime, tabletNumber,
                     timeRunning, waterTemp, normalUse, waterColor, waterSmell, waterTaste,
                     rottenEgg, sedimentPresent, sedimentFeathery, bacteriaResult, hardnessPpm,
                     chlorinePpm, alkalinityPpm, copperPpm, ironPpm, phValue, pesticideResult,
-                    leadResult, nitriteResult, nitrateResult);
+                    leadResult, nitriteResult, nitrateResult, latitude, longitude, locality,
+                    zipCode, address);
             record.setId(id);
             recordViewModel.update(record);
 

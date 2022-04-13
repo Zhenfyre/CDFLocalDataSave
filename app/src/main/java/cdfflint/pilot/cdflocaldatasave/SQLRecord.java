@@ -32,6 +32,11 @@ public class SQLRecord {
     private String leadResult;
     private String nitriteResult;
     private String nitrateResult;
+    private String latitude;
+    private String longitude;
+    private String locality;
+    private String zipCode;
+    private String address;
 
     public SQLRecord(String collectionDate, String collectionTime, int tabletNumber,
                      String timeRunning, String waterTemp, String normalUse, String waterColor,
@@ -39,7 +44,8 @@ public class SQLRecord {
                      String sedimentFeathery, String bacteriaResult, String hardnessPpm,
                      String chlorinePpm, String alkalinityPpm, String copperPpm, String ironPpm,
                      String phValue, String pesticideResult, String leadResult,
-                     String nitriteResult, String nitrateResult) {
+                     String nitriteResult, String nitrateResult, String latitude, String longitude,
+                     String locality, String zipCode, String address) {
 
         this.collectionDate = collectionDate;
         this.collectionTime = collectionTime;
@@ -64,6 +70,11 @@ public class SQLRecord {
         this.leadResult = leadResult;
         this.nitriteResult = nitriteResult;
         this.nitrateResult = nitrateResult;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.locality = locality;
+        this.zipCode = zipCode;
+        this.address = address;
     }
 
     public void setId(int id) {
@@ -164,5 +175,25 @@ public class SQLRecord {
 
     public String getNitrateResult() {
         return nitrateResult;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getLocality() {
+        return locality;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }

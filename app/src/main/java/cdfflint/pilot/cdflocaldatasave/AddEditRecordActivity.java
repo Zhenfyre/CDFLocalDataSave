@@ -95,6 +95,16 @@ public class AddEditRecordActivity extends AppCompatActivity {
             "cdfflint.pilot.cdflocaldatasave.EXTRA_NITRITE_RESULT";
     public static final String EXTRA_NITRATE_RESULT =
             "cdfflint.pilot.cdflocaldatasave.EXTRA_NITRATE_RESULT";
+    public static final String EXTRA_LATITUDE =
+            "cdfflint.pilot.cdflocaldatasave.EXTRA_LATITUDE";
+    public static final String EXTRA_LONGITUDE =
+            "cdfflint.pilot.cdflocaldatasave.EXTRA_LONGITUDE";
+    public static final String EXTRA_LOCALITY =
+            "cdfflint.pilot.cdflocaldatasave.EXTRA_LOCALITY";
+    public static final String EXTRA_ZIPCODE =
+            "cdfflint.pilot.cdflocaldatasave.EXTRA_ZIPCODE";
+    public static final String EXTRA_ADDRESS =
+            "cdfflint.pilot.cdflocaldatasave.EXTRA_ADDRESS";
 
     private NumberPicker numberPickerTablet;
     private EditText editTextDate;
@@ -119,9 +129,20 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private EditText editTextLeadResult;
     private EditText editTextNitriteResult;
     private EditText editTextNitrateResult;
+    private EditText editTextLatitude;
+    private EditText editTextLongitude;
+    private EditText editTextLocality;
+    private EditText editTextZipCode;
+    private EditText editTextAddress;
+
+    private String latitude = " ";
+    private String longitude = " ";
+    private String locality = " ";
+    private String zipCode = " ";
+    private String address = " ";
 
     Button locationButton;
-    TextView textView1, textView2, textView3, textView4, textView5;
+    EditText textView1, textView2, textView3, textView4, textView5;
     LinearLayout linearLayout1, linearLayout2;
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -131,11 +152,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_record);
 
         locationButton = findViewById(R.id.location_button);
-        textView1 = findViewById(R.id.text_view1);
-        textView2 = findViewById(R.id.text_view2);
-        textView3 = findViewById(R.id.text_view3);
-        textView4 = findViewById(R.id.text_view4);
-        textView5 = findViewById(R.id.text_view5);
+        editTextLatitude = findViewById(R.id.text_view1);
+        editTextLongitude = findViewById(R.id.text_view2);
+        editTextLocality = findViewById(R.id.text_view3);
+        editTextZipCode = findViewById(R.id.text_view4);
+        editTextAddress = findViewById(R.id.text_view5);
         linearLayout1 = findViewById(R.id.linear_layout1);
         linearLayout2 = findViewById(R.id.linear_layout2);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -146,15 +167,15 @@ public class AddEditRecordActivity extends AppCompatActivity {
                 if (ActivityCompat.checkSelfPermission(AddEditRecordActivity.this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     getLocation();
-                    textView1.setVisibility(View.VISIBLE);
-                    textView2.setVisibility(View.VISIBLE);
-                    textView3.setVisibility(View.VISIBLE);
-                    textView4.setVisibility(View.VISIBLE);
-                    textView5.setVisibility(View.VISIBLE);
+                    editTextLatitude.setVisibility(View.VISIBLE);
+                    editTextLongitude.setVisibility(View.VISIBLE);
+                    editTextLocality.setVisibility(View.VISIBLE);
+                    editTextZipCode.setVisibility(View.VISIBLE);
+                    editTextAddress.setVisibility(View.VISIBLE);
                     linearLayout1.setVisibility(View.VISIBLE);
                     linearLayout2.setVisibility(View.VISIBLE);
-                    String Latitude = textView1.getText().toString();
-                    Toast.makeText(AddEditRecordActivity.this, Latitude,
+                    latitude = editTextLatitude.getText().toString();
+                    Toast.makeText(AddEditRecordActivity.this, latitude,
                             Toast.LENGTH_LONG).show();
                 } else {
                     ActivityCompat.requestPermissions(AddEditRecordActivity.this,
@@ -220,6 +241,19 @@ public class AddEditRecordActivity extends AppCompatActivity {
             editTextLeadResult.setText(intent.getStringExtra(EXTRA_LEAD_RESULT));
             editTextNitriteResult.setText(intent.getStringExtra(EXTRA_NITRITE_RESULT));
             editTextNitrateResult.setText(intent.getStringExtra(EXTRA_NITRATE_RESULT));
+            editTextLatitude.setText(intent.getStringExtra(EXTRA_LATITUDE));
+            editTextLongitude.setText(intent.getStringExtra(EXTRA_LONGITUDE));
+            editTextLocality.setText(intent.getStringExtra(EXTRA_LOCALITY));
+            editTextZipCode.setText(intent.getStringExtra(EXTRA_ZIPCODE));
+            editTextAddress.setText(intent.getStringExtra(EXTRA_ADDRESS));
+
+            editTextLatitude.setVisibility(View.VISIBLE);
+            editTextLongitude.setVisibility(View.VISIBLE);
+            editTextLocality.setVisibility(View.VISIBLE);
+            editTextZipCode.setVisibility(View.VISIBLE);
+            editTextAddress.setVisibility(View.VISIBLE);
+            linearLayout1.setVisibility(View.VISIBLE);
+            linearLayout2.setVisibility(View.VISIBLE);
 
         } else {
             setTitle("Add Record");
@@ -238,23 +272,23 @@ public class AddEditRecordActivity extends AppCompatActivity {
                                 Locale.getDefault());
                         List<Address> addresses = geocoder.getFromLocation(
                                 location.getLatitude(), location.getLongitude(), 1);
-                        textView1.setText(Html.fromHtml(
+                        editTextLatitude.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Latitude :</b><br></font>"
                                         + addresses.get(0).getLatitude()
                         ));
-                        textView2.setText(Html.fromHtml(
+                        editTextLongitude.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Longitude :</b><br></font>"
                                         + addresses.get(0).getLongitude()
                         ));
-                        textView3.setText(Html.fromHtml(
+                        editTextLocality.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Locality :</b><br></font>"
                                         + addresses.get(0).getLocality()
                         ));
-                        textView4.setText(Html.fromHtml(
+                        editTextZipCode.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Zip Code :</b><br></font>"
                                         + addresses.get(0).getPostalCode()
                         ));
-                        textView5.setText(Html.fromHtml(
+                        editTextAddress.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Address :</b><br></font>"
                                         + addresses.get(0).getAddressLine(0)
                         ));
@@ -290,6 +324,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
         String leadResult = editTextLeadResult.getText().toString();
         String nitriteResult = editTextNitriteResult.getText().toString();
         String nitrateResult = editTextNitrateResult.getText().toString();
+        latitude = editTextLatitude.getText().toString();
+        longitude = editTextLongitude.getText().toString();
+        locality = editTextLocality.getText().toString();
+        zipCode = editTextZipCode.getText().toString();
+        address = editTextAddress.getText().toString();
 
         if (collectionDate.trim().isEmpty() || collectionTime.trim().isEmpty() || tabletNumber == 0) {
             Toast.makeText(this, "Please enter tablet number, date and time of collection",
@@ -321,6 +360,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
         data.putExtra(EXTRA_LEAD_RESULT, leadResult);
         data.putExtra(EXTRA_NITRITE_RESULT, nitriteResult);
         data.putExtra(EXTRA_NITRATE_RESULT, nitrateResult);
+        data.putExtra(EXTRA_LATITUDE, latitude);
+        data.putExtra(EXTRA_LONGITUDE, longitude);
+        data.putExtra(EXTRA_LOCALITY, locality);
+        data.putExtra(EXTRA_ZIPCODE, zipCode);
+        data.putExtra(EXTRA_ADDRESS, address);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1) {

@@ -101,14 +101,14 @@
         android:visibility="gone"
         android:id="@+id/linear_layout1">
 
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/text_view1"
             android:visibility="gone"/>
 
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -125,14 +125,14 @@
             android:visibility="gone"
             android:id="@+id/linear_layout2">
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/text_view3"
                 android:visibility="gone"/>
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -141,7 +141,7 @@
 
         </LinearLayout>
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
