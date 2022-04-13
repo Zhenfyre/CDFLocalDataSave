@@ -142,8 +142,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private String address = " ";
 
     Button locationButton;
-    EditText textView1, textView2, textView3, textView4, textView5;
-    LinearLayout linearLayout1, linearLayout2;
+    TextView textView1, textView2, textView3, textView4, textView5;
+    LinearLayout linearLayout1, linearLayout2, linearLayout3;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
@@ -152,13 +152,20 @@ public class AddEditRecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_record);
 
         locationButton = findViewById(R.id.location_button);
-        editTextLatitude = findViewById(R.id.text_view1);
-        editTextLongitude = findViewById(R.id.text_view2);
-        editTextLocality = findViewById(R.id.text_view3);
-        editTextZipCode = findViewById(R.id.text_view4);
-        editTextAddress = findViewById(R.id.text_view5);
+        editTextLatitude = findViewById(R.id.edit_text1);
+        editTextLongitude = findViewById(R.id.edit_text2);
+        editTextLocality = findViewById(R.id.edit_text3);
+        editTextZipCode = findViewById(R.id.edit_text4);
+        editTextAddress = findViewById(R.id.edit_text5);
         linearLayout1 = findViewById(R.id.linear_layout1);
         linearLayout2 = findViewById(R.id.linear_layout2);
+        linearLayout3 = findViewById(R.id.linear_layout3);
+        textView1 = findViewById(R.id.text_view1);
+        textView2 = findViewById(R.id.text_view2);
+        textView3 = findViewById(R.id.text_view3);
+        textView4 = findViewById(R.id.text_view4);
+        textView5 = findViewById(R.id.text_view5);
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         locationButton.setOnClickListener(new View.OnClickListener(){
@@ -174,6 +181,12 @@ public class AddEditRecordActivity extends AppCompatActivity {
                     editTextAddress.setVisibility(View.VISIBLE);
                     linearLayout1.setVisibility(View.VISIBLE);
                     linearLayout2.setVisibility(View.VISIBLE);
+                    linearLayout3.setVisibility(View.VISIBLE);
+                    textView1.setVisibility(View.VISIBLE);
+                    textView2.setVisibility(View.VISIBLE);
+                    textView3.setVisibility(View.VISIBLE);
+                    textView4.setVisibility(View.VISIBLE);
+                    textView5.setVisibility(View.VISIBLE);
                     latitude = editTextLatitude.getText().toString();
                     Toast.makeText(AddEditRecordActivity.this, latitude,
                             Toast.LENGTH_LONG).show();
@@ -254,6 +267,12 @@ public class AddEditRecordActivity extends AppCompatActivity {
             editTextAddress.setVisibility(View.VISIBLE);
             linearLayout1.setVisibility(View.VISIBLE);
             linearLayout2.setVisibility(View.VISIBLE);
+            linearLayout3.setVisibility(View.VISIBLE);
+            textView1.setVisibility(View.VISIBLE);
+            textView2.setVisibility(View.VISIBLE);
+            textView3.setVisibility(View.VISIBLE);
+            textView4.setVisibility(View.VISIBLE);
+            textView5.setVisibility(View.VISIBLE);
 
         } else {
             setTitle("Add Record");
@@ -272,26 +291,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
                                 Locale.getDefault());
                         List<Address> addresses = geocoder.getFromLocation(
                                 location.getLatitude(), location.getLongitude(), 1);
-                        editTextLatitude.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Latitude :</b><br></font>"
-                                        + addresses.get(0).getLatitude()
-                        ));
-                        editTextLongitude.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Longitude :</b><br></font>"
-                                        + addresses.get(0).getLongitude()
-                        ));
-                        editTextLocality.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Locality :</b><br></font>"
-                                        + addresses.get(0).getLocality()
-                        ));
-                        editTextZipCode.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Zip Code :</b><br></font>"
-                                        + addresses.get(0).getPostalCode()
-                        ));
-                        editTextAddress.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Address :</b><br></font>"
-                                        + addresses.get(0).getAddressLine(0)
-                        ));
+                        editTextLatitude.setText(Html.fromHtml(String.valueOf(addresses.get(0).getLatitude())));
+                        editTextLongitude.setText(Html.fromHtml(String.valueOf(addresses.get(0).getLongitude())));
+                        editTextLocality.setText(Html.fromHtml(addresses.get(0).getLocality()));
+                        editTextZipCode.setText(Html.fromHtml(addresses.get(0).getPostalCode()));
+                        editTextAddress.setText(Html.fromHtml(addresses.get(0).getAddressLine(0)));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

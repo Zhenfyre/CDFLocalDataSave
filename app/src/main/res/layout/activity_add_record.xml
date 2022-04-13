@@ -101,18 +101,35 @@
         android:visibility="gone"
         android:id="@+id/linear_layout1">
 
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:id="@+id/text_view1"
+            android:text="Latitude: "
             android:visibility="gone"/>
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="9"
+            android:id="@+id/edit_text1"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:id="@+id/text_view2"
+            android:layout_marginStart="16dp"
+            android:text="Longitude: "
+            android:visibility="gone"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:id="@+id/edit_text2"
             android:visibility="gone"/>
 
     </LinearLayout>
@@ -121,33 +138,68 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:visibility="gone"
             android:id="@+id/linear_layout2">
 
-            <EditText
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:id="@+id/text_view3"
+                android:text="Locality: "
                 android:visibility="gone"/>
 
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="9"
+                android:id="@+id/edit_text3"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
                 android:id="@+id/text_view4"
+                android:layout_marginStart="16dp"
+                android:text="Zip Code: "
+                android:visibility="gone"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:id="@+id/edit_text4"
                 android:visibility="gone"/>
 
         </LinearLayout>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/text_view5"
-        android:visibility="gone"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:id="@+id/linear_layout3"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:id="@+id/text_view5"
+            android:text="Address: "
+            android:visibility="gone"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="21"
+            android:id="@+id/edit_text5"
+            android:visibility="gone"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
