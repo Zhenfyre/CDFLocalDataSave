@@ -109,7 +109,7 @@
     <string name="hh_mm_am_pm">Time of Collection</string>
     <string name="tablet_number">Tablet Number: 000</string>
     <string name="mm_dd_yyyy">Date Collected</string>
-    <string name="default_time">Seconds running before collection</string>
-    <string name="water_temp">Water Temperature</string>
+    <string name="default_time">Seconds running?</string>
+    <string name="water_temp">Water Temperature?</string>
     <string name="tablet_number_text">Tablet Number</string>
 </resources>
