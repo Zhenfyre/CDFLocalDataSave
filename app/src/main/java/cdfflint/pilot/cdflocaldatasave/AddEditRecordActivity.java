@@ -430,10 +430,14 @@ public class AddEditRecordActivity extends AppCompatActivity {
         final String leadResultSend = editTextLeadResult.getText().toString().trim();
         final String nitriteResultSend = editTextNitriteResult.getText().toString().trim();
         final String nitrateResultSend = editTextNitrateResult.getText().toString().trim();
-
+        final String latitudeSend = editTextLatitude.getText().toString().trim();
+        final String longitudeSend = editTextLongitude.getText().toString().trim();
+        final String localitySend = editTextLocality.getText().toString().trim();
+        final String zipCodeSend = editTextZipCode.getText().toString().trim();
+        final String addressSend = editTextAddress.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                "https://script.google.com/macros/s/AKfycbwVOKSgVxhTbl4FpkorCU73doMw6bgZn8Yb-f5eXweBsZgw-zDL9Y09-LZK7cq1TIF-OA/exec",
+                "https://script.google.com/macros/s/AKfycbwYJqShj4JPKEltoi0vLpegVbF-RZU4fYhHcl_3mWNSw65JEnsxHY6s_YW2pY7rc-S4Lg/exec",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -475,6 +479,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
                 paramsMap.put("leadResult",leadResultSend);
                 paramsMap.put("nitriteResult",nitriteResultSend);
                 paramsMap.put("nitrateResult",nitrateResultSend);
+                paramsMap.put("latitude",latitudeSend);
+                paramsMap.put("longitude",longitudeSend);
+                paramsMap.put("locality",localitySend);
+                paramsMap.put("zipCode",zipCodeSend);
+                paramsMap.put("address",addressSend);
 
                 return paramsMap;
             }
