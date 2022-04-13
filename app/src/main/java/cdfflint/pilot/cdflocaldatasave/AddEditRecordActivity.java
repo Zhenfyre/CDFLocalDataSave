@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -120,6 +122,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
     Button locationButton;
     TextView textView1, textView2, textView3, textView4, textView5;
+    LinearLayout linearLayout1, linearLayout2;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
@@ -133,6 +136,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
         textView3 = findViewById(R.id.text_view3);
         textView4 = findViewById(R.id.text_view4);
         textView5 = findViewById(R.id.text_view5);
+        linearLayout1 = findViewById(R.id.linear_layout1);
+        linearLayout2 = findViewById(R.id.linear_layout2);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         locationButton.setOnClickListener(new View.OnClickListener(){
@@ -141,6 +146,16 @@ public class AddEditRecordActivity extends AppCompatActivity {
                 if (ActivityCompat.checkSelfPermission(AddEditRecordActivity.this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     getLocation();
+                    textView1.setVisibility(View.VISIBLE);
+                    textView2.setVisibility(View.VISIBLE);
+                    textView3.setVisibility(View.VISIBLE);
+                    textView4.setVisibility(View.VISIBLE);
+                    textView5.setVisibility(View.VISIBLE);
+                    linearLayout1.setVisibility(View.VISIBLE);
+                    linearLayout2.setVisibility(View.VISIBLE);
+                    String Latitude = textView1.getText().toString();
+                    Toast.makeText(AddEditRecordActivity.this, Latitude,
+                            Toast.LENGTH_LONG).show();
                 } else {
                     ActivityCompat.requestPermissions(AddEditRecordActivity.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
@@ -211,6 +226,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void getLocation() {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
             @Override
