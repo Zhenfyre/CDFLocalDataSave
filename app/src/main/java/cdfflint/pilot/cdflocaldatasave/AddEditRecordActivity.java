@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -135,11 +136,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private EditText editTextZipCode;
     private EditText editTextAddress;
 
-    private String latitude = " ";
-    private String longitude = " ";
-    private String locality = " ";
-    private String zipCode = " ";
-    private String address = " ";
+    private String latitude = "42.73300";
+    private String longitude = "-84.47820";
+    private String locality = "East Lansing";
+    private String zipCode = "48824";
+    private String address = "509 E. Circle Drive, East Lansing, MI 48824, USA";
 
     Button locationButton;
     TextView textView1, textView2, textView3, textView4, textView5;
@@ -188,8 +189,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
                     textView4.setVisibility(View.VISIBLE);
                     textView5.setVisibility(View.VISIBLE);
                     latitude = editTextLatitude.getText().toString();
-                    Toast.makeText(AddEditRecordActivity.this, latitude,
-                            Toast.LENGTH_LONG).show();
+
                 } else {
                     ActivityCompat.requestPermissions(AddEditRecordActivity.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
@@ -377,6 +377,10 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
         addItemToSheet();
         setResult(RESULT_OK, data);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<" + latitude  + ">,<" + longitude + ">?q=<" + latitude  + ">,<" + longitude + ">(" + address + ")"));
+        startActivity(intent);
+
         finish();
     }
 
