@@ -136,13 +136,13 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private EditText editTextZipCode;
     private EditText editTextAddress;
 
-    private String latitude = "42.73300";
-    private String longitude = "-84.47820";
-    private String locality = "East Lansing";
-    private String zipCode = "48824";
-    private String address = "509 E. Circle Drive, East Lansing, MI 48824, USA";
+    private String latitude;
+    private String longitude;
+    private String locality;
+    private String zipCode;
+    private String address;
 
-    Button locationButton;
+    Button addLocationButton, defaultLocationButton;
     TextView textView1, textView2, textView3, textView4, textView5;
     LinearLayout linearLayout1, linearLayout2, linearLayout3;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -152,7 +152,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
 
-        locationButton = findViewById(R.id.location_button);
+        addLocationButton = findViewById(R.id.current_location_button);
+        defaultLocationButton = findViewById(R.id.refuse_location_button);
         editTextLatitude = findViewById(R.id.edit_text1);
         editTextLongitude = findViewById(R.id.edit_text2);
         editTextLocality = findViewById(R.id.edit_text3);
@@ -169,7 +170,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        locationButton.setOnClickListener(new View.OnClickListener(){
+        addLocationButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 if (ActivityCompat.checkSelfPermission(AddEditRecordActivity.this,
@@ -188,12 +189,40 @@ public class AddEditRecordActivity extends AppCompatActivity {
                     textView3.setVisibility(View.VISIBLE);
                     textView4.setVisibility(View.VISIBLE);
                     textView5.setVisibility(View.VISIBLE);
-                    latitude = editTextLatitude.getText().toString();
 
                 } else {
                     ActivityCompat.requestPermissions(AddEditRecordActivity.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
                 }
+            }
+        });
+
+        defaultLocationButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                    editTextLatitude.setVisibility(View.VISIBLE);
+                    editTextLongitude.setVisibility(View.VISIBLE);
+                    editTextLocality.setVisibility(View.VISIBLE);
+                    editTextZipCode.setVisibility(View.VISIBLE);
+                    editTextAddress.setVisibility(View.VISIBLE);
+                    linearLayout1.setVisibility(View.VISIBLE);
+                    linearLayout2.setVisibility(View.VISIBLE);
+                    linearLayout3.setVisibility(View.VISIBLE);
+                    textView1.setVisibility(View.VISIBLE);
+                    textView2.setVisibility(View.VISIBLE);
+                    textView3.setVisibility(View.VISIBLE);
+                    textView4.setVisibility(View.VISIBLE);
+                    textView5.setVisibility(View.VISIBLE);
+
+                    Location location = new Location("defaultlocation");
+                    location.setLatitude(42.73300);
+                    location.setLongitude(-84.47820);
+
+                editTextLatitude.setText(Html.fromHtml(String.valueOf(location.getLatitude())));
+                editTextLongitude.setText(Html.fromHtml(String.valueOf(location.getLongitude())));
+                editTextLocality.setText("East Lansing");
+                editTextZipCode.setText("48824");
+                editTextAddress.setText("509 E. Circle Drive, East Lansing, MI 48824, USA");
             }
         });
 
@@ -375,12 +404,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
             data.putExtra(EXTRA_ID, id);
         }
 
-        addItemToSheet();
-        setResult(RESULT_OK, data);
-
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<" + latitude  + ">,<" + longitude + ">?q=<" + latitude  + ">,<" + longitude + ">(" + address + ")"));
         startActivity(intent);
 
+        addItemToSheet();
+        setResult(RESULT_OK, data);
         finish();
     }
 

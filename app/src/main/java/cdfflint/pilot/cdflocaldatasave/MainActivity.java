@@ -65,8 +65,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                recordViewModel.delete(adapter.getRecordAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this, "Record deleted", Toast.LENGTH_SHORT).show();
+
+                switch (direction) {
+                    case ItemTouchHelper.LEFT:
+                        recordViewModel.delete(adapter.getRecordAt(viewHolder.getAdapterPosition()));
+                        Toast.makeText(MainActivity.this, "Record deleted", Toast.LENGTH_SHORT).show();
+                        break;
+                    case ItemTouchHelper.RIGHT:
+
+                        break;
+                }
+
             }
         }).attachToRecyclerView(recyclerView);
 

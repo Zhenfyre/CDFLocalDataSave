@@ -79,19 +79,38 @@
 
         </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:paddingTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:text="Add Current Location?"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/teal_700"
-        android:id="@+id/location_button"
-        />
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Add Current Location?"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/teal_700"
+            android:id="@+id/current_location_button"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Refuse Location?"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/teal_700"
+            android:id="@+id/refuse_location_button"
+            />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
