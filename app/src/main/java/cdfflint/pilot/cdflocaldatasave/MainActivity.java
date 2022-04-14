@@ -3,6 +3,7 @@ package cdfflint.pilot.cdflocaldatasave;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -27,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
     public static final int EDIT_NOTE_REQUEST = 2;
 
     private RecordViewModel recordViewModel;
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        coordinatorLayout = findViewById(R.id.coordinator_layout);
         FloatingActionButton buttonAddRecord = findViewById(R.id.button_add_record);
         buttonAddRecord.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,17 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
-                switch (direction) {
-                    case ItemTouchHelper.LEFT:
-                        recordViewModel.delete(adapter.getRecordAt(viewHolder.getAdapterPosition()));
-                        Toast.makeText(MainActivity.this, "Record deleted", Toast.LENGTH_SHORT).show();
-                        break;
-                    case ItemTouchHelper.RIGHT:
-
-                        break;
-                }
-
+                Snackbar.make(coordinatorLayout, "Confirm Deletion?", Snackbar.LENGTH_LONG).setAction("Delete",
+                        new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view) {
+                                recordViewModel.delete(adapter.getRecordAt(viewHolder.getAdapterPosition()));
+                                Toast.makeText(MainActivity.this, "Record deleted", Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
             }
         }).attachToRecyclerView(recyclerView);
 

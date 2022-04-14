@@ -90,7 +90,7 @@
             android:layout_weight="1"
             android:layout_margin="8dp"
             android:layout_gravity="center_horizontal"
-            android:text="Add Current Location?"
+            android:text="Add Current Location"
             android:textStyle="bold"
             android:textColor="@color/white"
             app:backgroundTint="@color/teal_700"
@@ -103,7 +103,7 @@
             android:layout_weight="1"
             android:layout_margin="8dp"
             android:layout_gravity="center_horizontal"
-            android:text="Refuse Location?"
+            android:text="Use Default Location"
             android:textStyle="bold"
             android:textColor="@color/white"
             app:backgroundTint="@color/teal_700"
@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:id="@+id/edit_text1"
+            android:text="42.73300"
             android:visibility="gone"/>
 
         <TextView
@@ -148,6 +149,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="9"
+            android:text="-84.47820"
             android:id="@+id/edit_text2"
             android:visibility="gone"/>
 
@@ -173,6 +175,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="9"
+                android:text="East Lansing"
                 android:id="@+id/edit_text3"
                 android:visibility="gone"/>
 
@@ -189,6 +192,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="9"
+                android:text="48824"
                 android:id="@+id/edit_text4"
                 android:visibility="gone"/>
 
@@ -215,6 +219,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="21"
+            android:text="Michigan State University"
             android:id="@+id/edit_text5"
             android:visibility="gone"/>
 
