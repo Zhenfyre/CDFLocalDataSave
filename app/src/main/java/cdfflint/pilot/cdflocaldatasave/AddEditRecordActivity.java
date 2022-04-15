@@ -114,7 +114,12 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private EditText editTextDate;
     private EditText editTextTimeCollected;
     private EditText editTextTimeRunning;
-    private EditText editTextTemp;
+
+    private RadioGroup tempGroup;
+    private RadioButton tempButton;
+    private String tempStringRecord;
+    private int tempRadioId = -1;
+
     private EditText editTextNormalUse;
     private EditText editTextWaterColor;
     private EditText editTextWaterSmell;
@@ -241,7 +246,9 @@ public class AddEditRecordActivity extends AppCompatActivity {
         editTextDate = findViewById(R.id.collectionDate);
         editTextTimeCollected = findViewById(R.id.time_of_day);
         editTextTimeRunning = findViewById(R.id.time_running_water);
-        editTextTemp = findViewById(R.id.temp_achieved);
+
+        tempGroup = findViewById(R.id.temp_achieved_radio_group);
+
         numberPickerTablet = findViewById(R.id.number_picker_tablet);
         editTextNormalUse = findViewById(R.id.normal_use);
         editTextWaterColor = findViewById(R.id.water_color);
@@ -278,7 +285,26 @@ public class AddEditRecordActivity extends AppCompatActivity {
             editTextDate.setText(intent.getStringExtra(EXTRA_COLLECTION_DATE));
             editTextTimeCollected.setText(intent.getStringExtra(EXTRA_COLLECTION_TIME));
             editTextTimeRunning.setText(intent.getStringExtra(EXTRA_TIME_RUNNING));
-            editTextTemp.setText(intent.getStringExtra(EXTRA_WATER_TEMP));
+
+            tempStringRecord = intent.getStringExtra(EXTRA_WATER_TEMP);
+            switch (tempStringRecord) {
+                case "Cold":
+                    tempGroup.check(R.id.negative_pesticide_radio_button);
+                    break;
+                case "Cool":
+                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    break;
+                case "Tepid":
+                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    break;
+                case "Hot":
+                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    break;
+                case "Scalding":
+                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    break;
+            }
+
             numberPickerTablet.setValue(intent.getIntExtra(EXTRA_TABLET, 0));
             editTextNormalUse.setText(intent.getStringExtra(EXTRA_NORMAL_USE));
             editTextWaterColor.setText(intent.getStringExtra(EXTRA_WATER_COLOR));
@@ -304,8 +330,6 @@ public class AddEditRecordActivity extends AppCompatActivity {
                     pesticideGroup.check(R.id.positive_pesticide_radio_button);
                     break;
             }
-
-            Toast.makeText(this, "PesticideStringRecord: " + pesticideStringRecord, Toast.LENGTH_LONG).show();
 
             leadStringRecord = intent.getStringExtra(EXTRA_LEAD_RESULT);
             switch (leadStringRecord) {
@@ -374,7 +398,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
         String collectionDate = editTextDate.getText().toString();
         String collectionTime = editTextTimeCollected.getText().toString();
         String timeRunning = editTextTimeRunning.getText().toString();
-        String waterTemp = editTextTemp.getText().toString();
+
+        tempRadioId = tempGroup.getCheckedRadioButtonId();
+        tempButton = findViewById(tempRadioId);
+        tempStringRecord = tempButton.getText().toString();
+
         String normalUse = editTextNormalUse.getText().toString();
         String waterColor = editTextWaterColor.getText().toString();
         String waterSmell = editTextWaterSmell.getText().toString();
@@ -417,7 +445,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
         data.putExtra(EXTRA_COLLECTION_DATE, collectionDate);
         data.putExtra(EXTRA_COLLECTION_TIME, collectionTime);
         data.putExtra(EXTRA_TIME_RUNNING, timeRunning);
-        data.putExtra(EXTRA_WATER_TEMP, waterTemp);
+        data.putExtra(EXTRA_WATER_TEMP, tempStringRecord);
         data.putExtra(EXTRA_NORMAL_USE, normalUse);
         data.putExtra(EXTRA_WATER_COLOR, waterColor);
         data.putExtra(EXTRA_WATER_SMELL, waterSmell);
@@ -486,7 +514,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
         final String dateCollectedSend = editTextDate.getText().toString().trim();
         final String timeCollectedSend = editTextTimeCollected.getText().toString().trim();
         final String timeRunningSend = editTextTimeRunning.getText().toString().trim();
-        final String waterTempSend = editTextTemp.getText().toString().trim();
+
+        tempRadioId = tempGroup.getCheckedRadioButtonId();
+        tempButton = findViewById(tempRadioId);
+        final String tempSend = tempButton.getText().toString().trim();
+
         final String normalUseSend = editTextNormalUse.getText().toString().trim();
         final String waterColorSend = editTextWaterColor.getText().toString().trim();
         final String waterSmellSend = editTextWaterSmell.getText().toString().trim();
@@ -542,7 +574,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
                 paramsMap.put("dateCollected",dateCollectedSend);
                 paramsMap.put("timeCollected",timeCollectedSend);
                 paramsMap.put("timeRunning",timeRunningSend);
-                paramsMap.put("waterTemp",waterTempSend);
+                paramsMap.put("waterTemp",tempSend);
                 paramsMap.put("normalUse",normalUseSend);
                 paramsMap.put("waterColor",waterColorSend);
                 paramsMap.put("waterSmell",waterSmellSend);
