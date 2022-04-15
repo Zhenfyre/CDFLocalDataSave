@@ -455,25 +455,87 @@
         android:orientation="horizontal"
         android:layout_marginBottom="20dp">
 
-        <EditText
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:id="@+id/pesticide_result"
-            android:hint="@string/pesticide"
-            android:layout_margin="8dp"
-            android:textSize="20sp"
-            android:textColor="#575757" />
+            android:orientation="vertical">
 
-        <EditText
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:text="@string/pesticide" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/pesticide_radio_group">
+                <RadioButton
+                    android:id="@+id/negative_pesticide_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/negative"
+                    android:checked="true"
+                    android:textSize="20sp"
+                    android:textColor="#575757"
+                    android:layout_marginStart="24dp"/>
+                <RadioButton
+                    android:id="@+id/positive_pesticide_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/positive"
+                    android:textSize="20sp"
+                    android:textColor="#575757"
+                    android:layout_marginStart="24dp"/>
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:id="@+id/lead_result"
-            android:hint="@string/lead"
-            android:layout_margin="8dp"
-            android:textSize="20sp"
-            android:textColor="#575757" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:text="@string/lead" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/lead_radio_group">
+                <RadioButton
+                    android:id="@+id/negative_lead_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/negative"
+                    android:checked="true"
+                    android:textSize="20sp"
+                    android:textColor="#575757"
+                    android:layout_marginStart="24dp"/>
+                <RadioButton
+                    android:id="@+id/positive_lead_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/positive"
+                    android:textSize="20sp"
+                    android:textColor="#575757"
+                    android:layout_marginStart="24dp"/>
+            </RadioGroup>
+
+        </LinearLayout>
 
     </LinearLayout>
 

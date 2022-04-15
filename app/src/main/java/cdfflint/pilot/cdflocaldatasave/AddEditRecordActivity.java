@@ -15,6 +15,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +25,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -126,8 +129,17 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private EditText editTextCopperPpm;
     private EditText editTextIronPpm;
     private EditText editTextPhValue;
-    private EditText editTextPesticideResult;
-    private EditText editTextLeadResult;
+
+    private RadioGroup pesticideGroup;
+    private RadioButton pesticideButton;
+    private String pesticideStringRecord;
+    private int pesticideRadioId = -1;
+
+    private RadioGroup leadGroup;
+    private RadioButton leadButton;
+    private String leadStringRecord;
+    private int leadRadioId = -1;
+
     private EditText editTextNitriteResult;
     private EditText editTextNitrateResult;
     private EditText editTextLatitude;
@@ -245,8 +257,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
         editTextCopperPpm = findViewById(R.id.copper_ppm);
         editTextIronPpm = findViewById(R.id.iron_ppm);
         editTextPhValue = findViewById(R.id.ph_value);
-        editTextPesticideResult = findViewById(R.id.pesticide_result);
-        editTextLeadResult = findViewById(R.id.lead_result);
+
+        pesticideGroup = findViewById(R.id.pesticide_radio_group);
+
+        leadGroup = findViewById(R.id.lead_radio_group);
+
         editTextNitriteResult = findViewById(R.id.nitrite_result);
         editTextNitrateResult = findViewById(R.id.nitrate_result);
 
@@ -279,8 +294,29 @@ public class AddEditRecordActivity extends AppCompatActivity {
             editTextCopperPpm.setText(intent.getStringExtra(EXTRA_COPPER_PPM));
             editTextIronPpm.setText(intent.getStringExtra(EXTRA_IRON_PPM));
             editTextPhValue.setText(intent.getStringExtra(EXTRA_PH_VALUE));
-            editTextPesticideResult.setText(intent.getStringExtra(EXTRA_PESTICIDE_RESULT));
-            editTextLeadResult.setText(intent.getStringExtra(EXTRA_LEAD_RESULT));
+
+            pesticideStringRecord = intent.getStringExtra(EXTRA_PESTICIDE_RESULT);
+            switch (pesticideStringRecord) {
+                case "Negative":
+                    pesticideGroup.check(R.id.negative_pesticide_radio_button);
+                    break;
+                case "Positive":
+                    pesticideGroup.check(R.id.positive_pesticide_radio_button);
+                    break;
+            }
+
+            Toast.makeText(this, "PesticideStringRecord: " + pesticideStringRecord, Toast.LENGTH_LONG).show();
+
+            leadStringRecord = intent.getStringExtra(EXTRA_LEAD_RESULT);
+            switch (leadStringRecord) {
+                case "Negative":
+                    leadGroup.check(R.id.negative_lead_radio_button);
+                    break;
+                case "Positive":
+                    leadGroup.check(R.id.positive_lead_radio_button);
+                    break;
+            }
+
             editTextNitriteResult.setText(intent.getStringExtra(EXTRA_NITRITE_RESULT));
             editTextNitrateResult.setText(intent.getStringExtra(EXTRA_NITRATE_RESULT));
             editTextLatitude.setText(intent.getStringExtra(EXTRA_LATITUDE));
@@ -353,8 +389,15 @@ public class AddEditRecordActivity extends AppCompatActivity {
         String copperPpm = editTextCopperPpm.getText().toString();
         String ironPpm = editTextIronPpm.getText().toString();
         String phValue = editTextPhValue.getText().toString();
-        String pesticideResult = editTextPesticideResult.getText().toString();
-        String leadResult = editTextLeadResult.getText().toString();
+
+        pesticideRadioId = pesticideGroup.getCheckedRadioButtonId();
+        pesticideButton = findViewById(pesticideRadioId);
+        pesticideStringRecord = pesticideButton.getText().toString();
+
+        leadRadioId = leadGroup.getCheckedRadioButtonId();
+        leadButton = findViewById(leadRadioId);
+        leadStringRecord = leadButton.getText().toString();
+
         String nitriteResult = editTextNitriteResult.getText().toString();
         String nitrateResult = editTextNitrateResult.getText().toString();
         latitude = editTextLatitude.getText().toString();
@@ -389,8 +432,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
         data.putExtra(EXTRA_COPPER_PPM, copperPpm);
         data.putExtra(EXTRA_IRON_PPM, ironPpm);
         data.putExtra(EXTRA_PH_VALUE, phValue);
-        data.putExtra(EXTRA_PESTICIDE_RESULT, pesticideResult);
-        data.putExtra(EXTRA_LEAD_RESULT, leadResult);
+        data.putExtra(EXTRA_PESTICIDE_RESULT, pesticideStringRecord);
+        data.putExtra(EXTRA_LEAD_RESULT, leadStringRecord);
         data.putExtra(EXTRA_NITRITE_RESULT, nitriteResult);
         data.putExtra(EXTRA_NITRATE_RESULT, nitrateResult);
         data.putExtra(EXTRA_LATITUDE, latitude);
@@ -458,8 +501,15 @@ public class AddEditRecordActivity extends AppCompatActivity {
         final String copperPpmSend = editTextCopperPpm.getText().toString().trim();
         final String ironPpmSend = editTextIronPpm.getText().toString().trim();
         final String phValueSend = editTextPhValue.getText().toString().trim();
-        final String pesticideResultSend = editTextPesticideResult.getText().toString().trim();
-        final String leadResultSend = editTextLeadResult.getText().toString().trim();
+
+        pesticideRadioId = pesticideGroup.getCheckedRadioButtonId();
+        pesticideButton = findViewById(pesticideRadioId);
+        final String pesticideResultSend = pesticideButton.getText().toString().trim();
+
+        leadRadioId = leadGroup.getCheckedRadioButtonId();
+        leadButton = findViewById(leadRadioId);
+        final String leadResultSend = leadButton.getText().toString().trim();
+
         final String nitriteResultSend = editTextNitriteResult.getText().toString().trim();
         final String nitrateResultSend = editTextNitrateResult.getText().toString().trim();
         final String latitudeSend = editTextLatitude.getText().toString().trim();
