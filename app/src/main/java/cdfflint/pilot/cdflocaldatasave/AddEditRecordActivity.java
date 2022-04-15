@@ -22,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -124,10 +125,19 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private EditText editTextWaterColor;
     private EditText editTextWaterSmell;
     private EditText editTextWaterTaste;
-    private EditText editTextRottenEgg;
-    private EditText editTextSedimentPresent;
-    private EditText editTextSedimentFeathery;
-    private EditText editTextBacteriaResult;
+
+    private String rottenEggStringRecord;
+    private CheckBox rottenEggCheckbox;
+
+    private String sedimentPresentStringRecord;
+    private CheckBox sedimentPresentCheckbox;
+
+    private String sedimentFeatheryStringRecord;
+    private CheckBox sedimentFeatheryCheckbox;
+
+    private String bacteriaStringRecord;
+    private CheckBox bacteriaCheckbox;
+
     private EditText editTextHardnessPpm;
     private EditText editTextChlorinePpm;
     private EditText editTextAlkalinityPpm;
@@ -135,15 +145,11 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private EditText editTextIronPpm;
     private EditText editTextPhValue;
 
-    private RadioGroup pesticideGroup;
-    private RadioButton pesticideButton;
     private String pesticideStringRecord;
-    private int pesticideRadioId = -1;
+    private CheckBox pesticideCheckbox;
 
-    private RadioGroup leadGroup;
-    private RadioButton leadButton;
     private String leadStringRecord;
-    private int leadRadioId = -1;
+    private CheckBox leadCheckbox;
 
     private EditText editTextNitriteResult;
     private EditText editTextNitrateResult;
@@ -254,10 +260,12 @@ public class AddEditRecordActivity extends AppCompatActivity {
         editTextWaterColor = findViewById(R.id.water_color);
         editTextWaterSmell = findViewById(R.id.water_smell);
         editTextWaterTaste = findViewById(R.id.water_taste);
-        editTextRottenEgg = findViewById(R.id.rotten_egg);
-        editTextSedimentPresent = findViewById(R.id.sediment_present);
-        editTextSedimentFeathery = findViewById(R.id.sediment_feathery);
-        editTextBacteriaResult = findViewById(R.id.bacteria_result);
+
+        rottenEggCheckbox = findViewById(R.id.rotten_egg_checkbox);
+        sedimentPresentCheckbox = findViewById(R.id.sediment_present_checkbox);
+        sedimentFeatheryCheckbox = findViewById(R.id.sediment_feathery_checkbox);
+        bacteriaCheckbox = findViewById(R.id.bacteria_result_checkbox);
+
         editTextHardnessPpm = findViewById(R.id.hardness_ppm);
         editTextChlorinePpm = findViewById(R.id.chlorine_ppm);
         editTextAlkalinityPpm = findViewById(R.id.alkalinity_ppm);
@@ -265,9 +273,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
         editTextIronPpm = findViewById(R.id.iron_ppm);
         editTextPhValue = findViewById(R.id.ph_value);
 
-        pesticideGroup = findViewById(R.id.pesticide_radio_group);
-
-        leadGroup = findViewById(R.id.lead_radio_group);
+        pesticideCheckbox = findViewById(R.id.positive_pesticide_checkbox);
+        leadCheckbox = findViewById(R.id.positive_lead_checkbox);
 
         editTextNitriteResult = findViewById(R.id.nitrite_result);
         editTextNitrateResult = findViewById(R.id.nitrate_result);
@@ -289,19 +296,19 @@ public class AddEditRecordActivity extends AppCompatActivity {
             tempStringRecord = intent.getStringExtra(EXTRA_WATER_TEMP);
             switch (tempStringRecord) {
                 case "Cold":
-                    tempGroup.check(R.id.negative_pesticide_radio_button);
+                    tempGroup.check(R.id.cold_radio_button);
                     break;
                 case "Cool":
-                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    tempGroup.check(R.id.cool_radio_button);
                     break;
                 case "Tepid":
-                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    tempGroup.check(R.id.tepid_radio_button);
                     break;
                 case "Hot":
-                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    tempGroup.check(R.id.hot_radio_button);
                     break;
                 case "Scalding":
-                    tempGroup.check(R.id.positive_pesticide_radio_button);
+                    tempGroup.check(R.id.scalding_radio_button);
                     break;
             }
 
@@ -310,10 +317,47 @@ public class AddEditRecordActivity extends AppCompatActivity {
             editTextWaterColor.setText(intent.getStringExtra(EXTRA_WATER_COLOR));
             editTextWaterSmell.setText(intent.getStringExtra(EXTRA_WATER_SMELL));
             editTextWaterTaste.setText(intent.getStringExtra(EXTRA_WATER_TASTE));
-            editTextRottenEgg.setText(intent.getStringExtra(EXTRA_ROTTEN_EGG));
-            editTextSedimentPresent.setText(intent.getStringExtra(EXTRA_SEDIMENT_PRESENT));
-            editTextSedimentFeathery.setText(intent.getStringExtra(EXTRA_SEDIMENT_FEATHERY));
-            editTextBacteriaResult.setText(intent.getStringExtra(EXTRA_BACTERIA_RESULT));
+
+            rottenEggStringRecord = intent.getStringExtra(EXTRA_ROTTEN_EGG);
+            switch (rottenEggStringRecord) {
+                case "Yes":
+                    rottenEggCheckbox.setChecked(true);
+                    break;
+                default:
+                    rottenEggCheckbox.setChecked(false);
+                    break;
+            }
+
+            sedimentPresentStringRecord = intent.getStringExtra(EXTRA_SEDIMENT_PRESENT);
+            switch (sedimentPresentStringRecord) {
+                case "Yes":
+                    sedimentPresentCheckbox.setChecked(true);
+                    break;
+                default:
+                    sedimentPresentCheckbox.setChecked(false);
+                    break;
+            }
+
+            sedimentFeatheryStringRecord = intent.getStringExtra(EXTRA_SEDIMENT_FEATHERY);
+            switch (sedimentFeatheryStringRecord) {
+                case "Yes":
+                    sedimentFeatheryCheckbox.setChecked(true);
+                    break;
+                default:
+                    sedimentFeatheryCheckbox.setChecked(false);
+                    break;
+            }
+
+            bacteriaStringRecord = intent.getStringExtra(EXTRA_BACTERIA_RESULT);
+            switch (bacteriaStringRecord) {
+                case "Positive":
+                    bacteriaCheckbox.setChecked(true);
+                    break;
+                default:
+                    bacteriaCheckbox.setChecked(false);
+                    break;
+            }
+
             editTextHardnessPpm.setText(intent.getStringExtra(EXTRA_HARDNESS_PPM));
             editTextChlorinePpm.setText(intent.getStringExtra(EXTRA_CHLORINE_PPM));
             editTextAlkalinityPpm.setText(intent.getStringExtra(EXTRA_ALKALINITY_PPM));
@@ -323,24 +367,23 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
             pesticideStringRecord = intent.getStringExtra(EXTRA_PESTICIDE_RESULT);
             switch (pesticideStringRecord) {
-                case "Negative":
-                    pesticideGroup.check(R.id.negative_pesticide_radio_button);
-                    break;
                 case "Positive":
-                    pesticideGroup.check(R.id.positive_pesticide_radio_button);
+                    pesticideCheckbox.setChecked(true);
+                    break;
+                default:
+                    pesticideCheckbox.setChecked(false);
                     break;
             }
 
             leadStringRecord = intent.getStringExtra(EXTRA_LEAD_RESULT);
             switch (leadStringRecord) {
-                case "Negative":
-                    leadGroup.check(R.id.negative_lead_radio_button);
-                    break;
                 case "Positive":
-                    leadGroup.check(R.id.positive_lead_radio_button);
+                    leadCheckbox.setChecked(true);
+                    break;
+                default:
+                    leadCheckbox.setChecked(false);
                     break;
             }
-
             editTextNitriteResult.setText(intent.getStringExtra(EXTRA_NITRITE_RESULT));
             editTextNitrateResult.setText(intent.getStringExtra(EXTRA_NITRATE_RESULT));
             editTextLatitude.setText(intent.getStringExtra(EXTRA_LATITUDE));
@@ -407,10 +450,35 @@ public class AddEditRecordActivity extends AppCompatActivity {
         String waterColor = editTextWaterColor.getText().toString();
         String waterSmell = editTextWaterSmell.getText().toString();
         String waterTaste = editTextWaterTaste.getText().toString();
-        String rottenEgg = editTextRottenEgg.getText().toString();
-        String sedimentPresent = editTextSedimentPresent.getText().toString();
-        String sedimentFeathery = editTextSedimentFeathery.getText().toString();
-        String bacteriaResult = editTextBacteriaResult.getText().toString();
+
+        boolean rottenEggIsChecked = rottenEggCheckbox.isChecked();
+        if (rottenEggIsChecked) {
+            rottenEggStringRecord = "Yes";
+        } else {
+            rottenEggStringRecord = "Missing";
+        }
+
+        boolean sedimentPresentIsChecked= sedimentPresentCheckbox.isChecked();
+        if (sedimentPresentIsChecked) {
+            sedimentPresentStringRecord = "Yes";
+        } else {
+            sedimentPresentStringRecord = "Missing";
+        }
+
+        boolean sedimentFeatheryIsChecked= sedimentFeatheryCheckbox.isChecked();
+        if (sedimentFeatheryIsChecked) {
+            sedimentFeatheryStringRecord = "Yes";
+        } else {
+            sedimentFeatheryStringRecord = "Missing";
+        }
+
+        boolean bacteriaIsChecked = bacteriaCheckbox.isChecked();
+        if (bacteriaIsChecked) {
+            bacteriaStringRecord = "Positive";
+        } else {
+            bacteriaStringRecord = "Missing";
+        }
+
         String hardnessPpm = editTextHardnessPpm.getText().toString();
         String chlorinePpm = editTextChlorinePpm.getText().toString();
         String alkalinityPpm = editTextAlkalinityPpm.getText().toString();
@@ -418,13 +486,19 @@ public class AddEditRecordActivity extends AppCompatActivity {
         String ironPpm = editTextIronPpm.getText().toString();
         String phValue = editTextPhValue.getText().toString();
 
-        pesticideRadioId = pesticideGroup.getCheckedRadioButtonId();
-        pesticideButton = findViewById(pesticideRadioId);
-        pesticideStringRecord = pesticideButton.getText().toString();
+        boolean pesticideIsChecked = pesticideCheckbox.isChecked();
+        if (pesticideIsChecked) {
+            pesticideStringRecord = "Positive";
+        } else {
+            pesticideStringRecord = "Missing";
+        }
 
-        leadRadioId = leadGroup.getCheckedRadioButtonId();
-        leadButton = findViewById(leadRadioId);
-        leadStringRecord = leadButton.getText().toString();
+        boolean leadIsChecked = leadCheckbox.isChecked();
+        if (leadIsChecked) {
+            leadStringRecord = "Positive";
+        } else {
+            leadStringRecord = "Missing";
+        }
 
         String nitriteResult = editTextNitriteResult.getText().toString();
         String nitrateResult = editTextNitrateResult.getText().toString();
@@ -450,10 +524,10 @@ public class AddEditRecordActivity extends AppCompatActivity {
         data.putExtra(EXTRA_WATER_COLOR, waterColor);
         data.putExtra(EXTRA_WATER_SMELL, waterSmell);
         data.putExtra(EXTRA_WATER_TASTE, waterTaste);
-        data.putExtra(EXTRA_ROTTEN_EGG, rottenEgg);
-        data.putExtra(EXTRA_SEDIMENT_PRESENT, sedimentPresent);
-        data.putExtra(EXTRA_SEDIMENT_FEATHERY, sedimentFeathery);
-        data.putExtra(EXTRA_BACTERIA_RESULT, bacteriaResult);
+        data.putExtra(EXTRA_ROTTEN_EGG, rottenEggStringRecord);
+        data.putExtra(EXTRA_SEDIMENT_PRESENT, sedimentPresentStringRecord);
+        data.putExtra(EXTRA_SEDIMENT_FEATHERY, sedimentFeatheryStringRecord);
+        data.putExtra(EXTRA_BACTERIA_RESULT, bacteriaStringRecord);
         data.putExtra(EXTRA_HARDNESS_PPM, hardnessPpm);
         data.putExtra(EXTRA_CHLORINE_PPM, chlorinePpm);
         data.putExtra(EXTRA_ALKALINITY_PPM, alkalinityPpm);
@@ -523,10 +597,39 @@ public class AddEditRecordActivity extends AppCompatActivity {
         final String waterColorSend = editTextWaterColor.getText().toString().trim();
         final String waterSmellSend = editTextWaterSmell.getText().toString().trim();
         final String waterTasteSend = editTextWaterTaste.getText().toString().trim();
-        final String rottenEggSend = editTextRottenEgg.getText().toString().trim();
-        final String sedimentPresentSend = editTextSedimentPresent.getText().toString().trim();
-        final String sedimentFeatherySend = editTextSedimentFeathery.getText().toString().trim();
-        final String bacteriaResultSend = editTextBacteriaResult.getText().toString().trim();
+
+        boolean rottenEggIsChecked = rottenEggCheckbox.isChecked();
+        if (rottenEggIsChecked) {
+            rottenEggStringRecord = "Yes";
+        } else {
+            rottenEggStringRecord = "Missing";
+        }
+        final String rottenEggSend = rottenEggStringRecord.trim();
+
+        boolean sedimentPresentIsChecked = sedimentPresentCheckbox.isChecked();
+        if (sedimentPresentIsChecked) {
+            sedimentPresentStringRecord = "Yes";
+        } else {
+            sedimentPresentStringRecord = "Missing";
+        }
+        final String sedimentPresentSend = sedimentPresentStringRecord.trim();
+
+        boolean sedimentFeatheryIsChecked = sedimentFeatheryCheckbox.isChecked();
+        if (sedimentFeatheryIsChecked) {
+            sedimentFeatheryStringRecord = "Yes";
+        } else {
+            sedimentFeatheryStringRecord = "Missing";
+        }
+        final String sedimentFeatherySend = sedimentFeatheryStringRecord.trim();
+
+        boolean bacteriaIsChecked = bacteriaCheckbox.isChecked();
+        if (bacteriaIsChecked) {
+            bacteriaStringRecord = "Positive";
+        } else {
+            bacteriaStringRecord = "Missing";
+        }
+        final String bacteriaResultSend = bacteriaStringRecord.trim();
+
         final String hardnessPpmSend = editTextHardnessPpm.getText().toString().trim();
         final String chlorinePpmSend = editTextChlorinePpm.getText().toString().trim();
         final String alkalinityPpmSend = editTextAlkalinityPpm.getText().toString().trim();
@@ -534,13 +637,21 @@ public class AddEditRecordActivity extends AppCompatActivity {
         final String ironPpmSend = editTextIronPpm.getText().toString().trim();
         final String phValueSend = editTextPhValue.getText().toString().trim();
 
-        pesticideRadioId = pesticideGroup.getCheckedRadioButtonId();
-        pesticideButton = findViewById(pesticideRadioId);
-        final String pesticideResultSend = pesticideButton.getText().toString().trim();
+        boolean pesticideIsChecked = pesticideCheckbox.isChecked();
+        if (pesticideIsChecked) {
+            pesticideStringRecord = "Positive";
+        } else {
+            pesticideStringRecord = "Missing";
+        }
+        final String pesticideResultSend = pesticideStringRecord.trim();
 
-        leadRadioId = leadGroup.getCheckedRadioButtonId();
-        leadButton = findViewById(leadRadioId);
-        final String leadResultSend = leadButton.getText().toString().trim();
+        boolean leadIsChecked = leadCheckbox.isChecked();
+        if (leadIsChecked) {
+            leadStringRecord = "Positive";
+        } else {
+            leadStringRecord = "Missing";
+        }
+        final String leadResultSend = leadStringRecord.trim();
 
         final String nitriteResultSend = editTextNitriteResult.getText().toString().trim();
         final String nitrateResultSend = editTextNitrateResult.getText().toString().trim();

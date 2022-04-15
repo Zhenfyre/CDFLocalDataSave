@@ -225,43 +225,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/time_running_water"
-            android:hint="@string/default_time"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeStepGranularity="2sp"
-            android:gravity="bottom"
-            android:inputType="number"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:textColor="#575757" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/normal_use"
-            android:hint="@string/normal_use"
-            android:gravity="bottom"
-            android:layout_marginEnd="8dp"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeStepGranularity="2sp"
-            android:textColor="#575757" />
-
-    </LinearLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -272,166 +235,383 @@
             android:textSize="20sp" />
 
         <RadioGroup
+            android:id="@+id/temp_achieved_radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:id="@+id/temp_achieved_radio_group">
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/cold_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:text="@string/cold"
-                android:textSize="20sp"
                 android:textColor="#575757"
-                android:layout_marginStart="24dp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/cool_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="@string/cool"
-                android:textSize="20sp"
                 android:textColor="#575757"
-                android:layout_marginStart="8dp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/tepid_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tepid"
+                android:layout_marginStart="8dp"
                 android:checked="true"
-                android:textSize="20sp"
+                android:text="@string/tepid"
                 android:textColor="#575757"
-                android:layout_marginStart="8dp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/warm_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="@string/warm"
-                android:textSize="20sp"
                 android:textColor="#575757"
-                android:layout_marginStart="8dp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/hot_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="@string/hot"
-                android:textSize="20sp"
                 android:textColor="#575757"
-                android:layout_marginStart="8dp"/>
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/scalding_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="@string/scalding"
-                android:textSize="20sp"
                 android:textColor="#575757"
-                android:layout_marginStart="8dp"/>
+                android:textSize="20sp" />
 
         </RadioGroup>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/water_color"
-        android:hint="@string/water_appearance"
-        android:layout_marginTop="16dp"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Time running before collection?"
+                android:textColor="#575757"
+                android:textSize="20sp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/water_smell"
-        android:hint="@string/water_smell"
-        android:textSize="20sp"
-        android:textColor="#575757" />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/time_running_water"
+                android:hint="seconds"
+                android:gravity="bottom"
+                android:inputType="number" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/water_taste"
-        android:hint="@string/water_taste_description"
-        android:textSize="20sp"
-        android:textColor="#575757"
-        android:layout_marginBottom="20dp"/>
+        </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="20dp">
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/normal_use"
+            android:textColor="#575757"
+            android:textSize="20sp" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:id="@+id/rotten_egg"
-            android:hint="@string/rottenEgg_smell"
-            android:textSize="20sp"
-            android:gravity="center_horizontal|bottom"
-            android:layout_margin="8dp"
-            android:textColor="#575757" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/sediment_present"
-            android:hint="@string/sediment"
-            android:textSize="20sp"
-            android:gravity="center_horizontal|bottom"
-            android:layout_margin="8dp"
-            android:textColor="#575757" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/sediment_feathery"
-            android:hint="@string/feathery"
-            android:gravity="center_horizontal|bottom"
-            android:textSize="20sp"
-            android:layout_margin="8dp"
-            android:textColor="#575757" />
+            android:id="@+id/normal_use"
+            android:gravity="bottom" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/water_appearance"
+            android:textColor="#575757"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/water_color"
+            android:gravity="bottom" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/water_smell"
+            android:textColor="#575757"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/water_smell"
+            android:gravity="bottom" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/water_taste_description"
+            android:textColor="#575757"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/water_taste"
+            android:gravity="bottom" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp">
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bacteria_result"
-            android:hint="@string/bacteria"
             android:textSize="20sp"
-            android:textColor="#575757"
-            android:paddingRight="24dp"
-            android:layout_margin="8dp"
-            android:layout_marginBottom="20dp"/>
+            android:padding="8dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:text="Check all that are true"
+            android:textStyle="bold"/>
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ph_value"
-            android:hint="@string/ph"
-            android:inputType="number"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:text="@string/rottenEgg_smell" />
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/rotten_egg_checkbox"
+                android:textSize="20sp"
+                android:text="Yes"
+                android:textColor="#575757"
+                android:layout_marginStart="24dp">
+            </CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:text="@string/sediment" />
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/sediment_present_checkbox"
+                android:textSize="20sp"
+                android:text="Yes"
+                android:textColor="#575757"
+                android:layout_marginStart="24dp">
+            </CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:text="@string/feathery" />
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/sediment_feathery_checkbox"
+                android:textSize="20sp"
+                android:text="Yes"
+                android:textColor="#575757"
+                android:layout_marginStart="24dp">
+            </CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:text="@string/bacteria" />
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/bacteria_result_checkbox"
+                android:textSize="20sp"
+                android:text="Positive"
+                android:textColor="#575757"
+                android:layout_marginStart="24dp">
+            </CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:text="@string/pesticide" />
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/positive_pesticide_checkbox"
+                android:textSize="20sp"
+                android:text="Positive"
+                android:textColor="#575757"
+                android:layout_marginStart="24dp">
+            </CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:text="@string/lead" />
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:text="Positive"
+                android:id="@+id/positive_lead_checkbox"
+                android:textSize="20sp"
+                android:textColor="#575757"
+                android:layout_marginStart="24dp">
+            </CheckBox>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_margin="8dp"
-            android:textColor="#575757" />
+            android:padding="8dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:text="Enter Test Results"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -441,37 +621,85 @@
         android:orientation="horizontal"
         android:layout_marginBottom="20dp">
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/hardness_ppm"
-            android:hint="@string/total_hardness"
-            android:layout_margin="8dp"
-            android:inputType="number"
-            android:textSize="20sp"
-            android:textColor="#575757" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/chlorine_ppm"
-            android:hint="@string/total_chlorine"
-            android:layout_margin="8dp"
-            android:textSize="20sp"
-            android:textColor="#575757" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#575757"
+                    android:text="@string/total_hardness" />
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/alkalinity_ppm"
-            android:hint="@string/alkalinity"
-            android:layout_margin="8dp"
-            android:inputType="number"
-            android:textSize="20sp"
-            android:textColor="#575757" />
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hardness_ppm"
+                    android:layout_margin="8dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:inputType="number"
+                    android:hint="@string/enter_ppm"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#575757"
+                    android:text="@string/total_chlorine" />
+
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chlorine_ppm"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_margin="8dp"
+                    android:hint="@string/enter_ppm"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#575757"
+                    android:text="@string/alkalinity" />
+
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/alkalinity_ppm"
+                    android:layout_margin="8dp"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:hint="@string/enter_ppm"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -481,32 +709,84 @@
             android:orientation="horizontal"
             android:layout_marginBottom="20dp">
 
-            <EditText
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:id="@+id/copper_ppm"
-                android:hint="@string/copper"
-                android:layout_margin="8dp"
-                android:textSize="20sp"
-                android:textColor="#575757" />
+                android:orientation="vertical">
 
-            <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#575757"
+                    android:text="@string/copper" />
+
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/copper_ppm"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_margin="8dp"
+                    android:hint="@string/enter_ppm"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:id="@+id/iron_ppm"
-                android:hint="@string/iron"
-                android:layout_margin="8dp"
-                android:textSize="20sp"
-                android:textColor="#575757" />
+                android:orientation="vertical">
 
-            <View
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#575757"
+                    android:text="@string/iron" />
+
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iron_ppm"
+                    android:layout_margin="8dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:hint="@string/enter_ppm"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_margin="8dp"
-                android:layout_height="wrap_content">
-            </View>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#575757"
+                    android:text="@string/ph" />
+
+                <EditText
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ph_value"
+                    android:hint="@string/ph"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:inputType="number"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -528,32 +808,17 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
-                android:text="@string/pesticide" />
+                android:textColor="#575757"
+                android:text="@string/nitrite" />
 
-            <RadioGroup
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/pesticide_radio_group">
-                <RadioButton
-                    android:id="@+id/negative_pesticide_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/negative"
-                    android:checked="true"
-                    android:textSize="20sp"
-                    android:textColor="#575757"
-                    android:layout_marginStart="24dp"/>
-                <RadioButton
-                    android:id="@+id/positive_pesticide_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/positive"
-                    android:textSize="20sp"
-                    android:textColor="#575757"
-                    android:layout_marginStart="24dp"/>
-            </RadioGroup>
+                android:id="@+id/nitrite_result"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal|bottom"
+                android:hint="@string/enter_ppm"/>
 
         </LinearLayout>
 
@@ -568,63 +833,21 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:padding="8dp"
-                android:textColor="@color/black"
                 android:gravity="center_horizontal"
-                android:text="@string/lead" />
+                android:textColor="#575757"
+                android:text="@string/nitrate" />
 
-            <RadioGroup
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/lead_radio_group">
-                <RadioButton
-                    android:id="@+id/negative_lead_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/negative"
-                    android:checked="true"
-                    android:textSize="20sp"
-                    android:textColor="#575757"
-                    android:layout_marginStart="24dp"/>
-                <RadioButton
-                    android:id="@+id/positive_lead_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/positive"
-                    android:textSize="20sp"
-                    android:textColor="#575757"
-                    android:layout_marginStart="24dp"/>
-            </RadioGroup>
+                android:id="@+id/nitrate_result"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal|bottom"
+                android:hint="@string/enter_ppm"/>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/nitrite_result"
-            android:hint="@string/nitrite"
-            android:layout_margin="8dp"
-            android:textSize="20sp"
-            android:textColor="#575757" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/nitrate_result"
-            android:hint="@string/nitrate"
-            android:layout_margin="8dp"
-            android:textSize="20sp"
-            android:textColor="#575757" />
     </LinearLayout>
 
     </LinearLayout>

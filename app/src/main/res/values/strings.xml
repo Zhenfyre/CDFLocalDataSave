@@ -59,9 +59,9 @@
     <string name="time_running">How long did you run the water before collecting your sample (1 min = 60 seconds)?</string>
     <string name="normal_use">Water normally used for...?</string>
     <string name="page_title">Report Water Testing Results</string>
-    <string name="bacteria">Bacteria Result</string>
-    <string name="pesticide">Pesticide</string>
-    <string name="lead">Lead</string>
+    <string name="bacteria">Bacteria Detected:</string>
+    <string name="pesticide">Pesticides Detected:</string>
+    <string name="lead">Lead Detected:</string>
     <string name="rottenEgg_smell">Rotten egg odor?</string>
     <string name="sediment">Sediment in bottom?</string>
     <string name="feathery">Sediment feathery?</string>
@@ -78,7 +78,7 @@
     <string name="water_color_description">The water is \u0020 \u0020 ... \u0020 \u0020 in color</string>
     <string name="water_smell_description">The water smells like...</string>
     <string name="water_taste_description">The water tastes...?</string>
-    <string name="enter_ppm">\u0020 \u0020 \u0020 \u0020 \u0020 \u0020  ppm</string>
+    <string name="enter_ppm">ppm</string>
     <string name="enter_pH"> \u0020 \u0020 \u0020 \u0020 \u0020 \u0020 \u0020 </string>
     <string name="safe">Safe</string>
     <string name="unsafe">Unsafe</string>
