@@ -37,7 +37,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
+import android.text.format.DateFormat;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -65,7 +65,7 @@ public class AddEditRecordActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     private TextView mDisplayTime;
-    int hour, minute;
+    int timerHour, timerMinutes;
 
     public static final String EXTRA_ID =
             "cdfflint.pilot.cdflocaldatasave.EXTRA_ID";
@@ -215,6 +215,26 @@ public class AddEditRecordActivity extends AppCompatActivity {
         };
 
         mDisplayTime = (TextView) findViewById(R.id.enter_time);
+        mDisplayTime.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                TimePickerDialog timePickerDialog = new TimePickerDialog(
+                        AddEditRecordActivity.this, android.R.style.Theme_Holo_Light_Dialog,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                                timerHour = hourOfDay;
+                                timerMinutes = minute;
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.set(0,0,0,timerHour,timerMinutes);
+                                mDisplayTime.setText(DateFormat.format("hh:mm aa", calendar));
+                            }
+                        },12, 0, false
+                );
+                timePickerDialog.updateTime(timerHour,timerMinutes);
+                timePickerDialog.show();
+            }
+        });
 
         addLocationButton = findViewById(R.id.current_location_button);
         defaultLocationButton = findViewById(R.id.refuse_location_button);
@@ -763,36 +783,4 @@ public class AddEditRecordActivity extends AppCompatActivity {
         queue.add(stringRequest);
 
     }
-
-    public void popTimePicker(View view){
-        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener()
-        {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute)
-            {
-
-                hour = selectedHour;
-                minute = selectedMinute;
-
-                String AM_PM ;
-                if(hour < 12) {
-                    AM_PM = "AM";
-                } else {
-                    AM_PM = "PM";
-                }
-                int formattedHour = hour;
-                if(hour>12){
-                    formattedHour = hour - 12;
-                }
-
-                mDisplayTime.setText(formattedHour + ":" + minute + " " + AM_PM );
-            }
-        };
-
-        TimePickerDialog timePickerDialog = new TimePickerDialog(AddEditRecordActivity.this,
-                onTimeSetListener, hour, minute, false);
-        timePickerDialog.setTitle("Select Time");
-        timePickerDialog.show();
-    }
-
 }

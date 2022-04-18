@@ -100,7 +100,6 @@
                     android:gravity="center"
                     android:textColor="#313131"
                     android:textStyle="bold"
-                    android:onClick="popTimePicker"
                     android:background="@drawable/rounded_corner"
                     android:layout_gravity="center_horizontal"/>
 
@@ -267,14 +266,13 @@
             android:id="@+id/temp_achieved_radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
 
             <RadioButton
                 android:id="@+id/cold_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:text="@string/cold"
                 android:textColor="#575757"
                 android:textSize="20sp" />
@@ -283,7 +281,6 @@
                 android:id="@+id/cool_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="@string/cool"
                 android:textColor="#575757"
                 android:textSize="20sp" />
@@ -292,7 +289,6 @@
                 android:id="@+id/tepid_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:checked="true"
                 android:text="@string/tepid"
                 android:textColor="#575757"
@@ -302,7 +298,6 @@
                 android:id="@+id/warm_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="@string/warm"
                 android:textColor="#575757"
                 android:textSize="20sp" />
@@ -311,7 +306,6 @@
                 android:id="@+id/hot_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="@string/hot"
                 android:textColor="#575757"
                 android:textSize="20sp" />
@@ -320,7 +314,6 @@
                 android:id="@+id/scalding_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="@string/scalding"
                 android:textColor="#575757"
                 android:textSize="20sp" />
