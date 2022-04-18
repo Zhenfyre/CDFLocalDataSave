@@ -6,10 +6,15 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -23,12 +28,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -45,12 +52,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 public class AddEditRecordActivity extends AppCompatActivity {
+
+    private static final String TAG = "AddEditRecordActivity";
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    private TextView mDisplayTime;
+    int hour, minute;
 
     public static final String EXTRA_ID =
             "cdfflint.pilot.cdflocaldatasave.EXTRA_ID";
@@ -112,8 +127,6 @@ public class AddEditRecordActivity extends AppCompatActivity {
             "cdfflint.pilot.cdflocaldatasave.EXTRA_ADDRESS";
 
     private NumberPicker numberPickerTablet;
-    private EditText editTextDate;
-    private EditText editTextTimeCollected;
     private EditText editTextTimeRunning;
 
     private RadioGroup tempGroup;
@@ -174,6 +187,34 @@ public class AddEditRecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
+
+        mDisplayDate = (TextView) findViewById(R.id.enter_date);
+        mDisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dateDialog = new DatePickerDialog(AddEditRecordActivity.this,
+                        AlertDialog.THEME_HOLO_LIGHT, mDateSetListener, year, month, day);
+                dateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dateDialog.show();
+            }
+        });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month +  "/" + day + "/" + year;
+                mDisplayDate.setText(date);
+            }
+        };
+
+        mDisplayTime = (TextView) findViewById(R.id.enter_time);
 
         addLocationButton = findViewById(R.id.current_location_button);
         defaultLocationButton = findViewById(R.id.refuse_location_button);
@@ -249,8 +290,6 @@ public class AddEditRecordActivity extends AppCompatActivity {
             }
         });
 
-        editTextDate = findViewById(R.id.collectionDate);
-        editTextTimeCollected = findViewById(R.id.time_of_day);
         editTextTimeRunning = findViewById(R.id.time_running_water);
 
         tempGroup = findViewById(R.id.temp_achieved_radio_group);
@@ -289,8 +328,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
         if (intent.hasExtra(EXTRA_ID)) {
             setTitle("Edit Record");
-            editTextDate.setText(intent.getStringExtra(EXTRA_COLLECTION_DATE));
-            editTextTimeCollected.setText(intent.getStringExtra(EXTRA_COLLECTION_TIME));
+            mDisplayDate.setText(intent.getStringExtra(EXTRA_COLLECTION_DATE));
+            mDisplayTime.setText(intent.getStringExtra(EXTRA_COLLECTION_TIME));
             editTextTimeRunning.setText(intent.getStringExtra(EXTRA_TIME_RUNNING));
 
             tempStringRecord = intent.getStringExtra(EXTRA_WATER_TEMP);
@@ -438,8 +477,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
     private void saveRecord() {
         int tabletNumber = numberPickerTablet.getValue();
-        String collectionDate = editTextDate.getText().toString();
-        String collectionTime = editTextTimeCollected.getText().toString();
+        String collectionDate = mDisplayDate.getText().toString();
+        String collectionTime = mDisplayTime.getText().toString();
         String timeRunning = editTextTimeRunning.getText().toString();
 
         tempRadioId = tempGroup.getCheckedRadioButtonId();
@@ -585,8 +624,8 @@ public class AddEditRecordActivity extends AppCompatActivity {
             tabletNumberSend = "'0" + tabletNumberGet;
         } else tabletNumberSend =  tabletNumberGet;
 
-        final String dateCollectedSend = editTextDate.getText().toString().trim();
-        final String timeCollectedSend = editTextTimeCollected.getText().toString().trim();
+        final String dateCollectedSend = mDisplayDate.getText().toString().trim();
+        final String timeCollectedSend = mDisplayTime.getText().toString().trim();
         final String timeRunningSend = editTextTimeRunning.getText().toString().trim();
 
         tempRadioId = tempGroup.getCheckedRadioButtonId();
@@ -723,6 +762,37 @@ public class AddEditRecordActivity extends AppCompatActivity {
 
         queue.add(stringRequest);
 
+    }
+
+    public void popTimePicker(View view){
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener()
+        {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute)
+            {
+
+                hour = selectedHour;
+                minute = selectedMinute;
+
+                String AM_PM ;
+                if(hour < 12) {
+                    AM_PM = "AM";
+                } else {
+                    AM_PM = "PM";
+                }
+                int formattedHour = hour;
+                if(hour>12){
+                    formattedHour = hour - 12;
+                }
+
+                mDisplayTime.setText(formattedHour + ":" + minute + " " + AM_PM );
+            }
+        };
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(AddEditRecordActivity.this,
+                onTimeSetListener, hour, minute, false);
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
     }
 
 }
