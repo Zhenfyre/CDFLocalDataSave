@@ -62,7 +62,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Select Date"
-                        android:textColorHint="#8a4d83"
                         android:id="@+id/enter_date"
                         android:textSize="20sp"
                         android:paddingStart="16dp"
@@ -89,7 +88,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Select Time"
-                    android:textColorHint="#8a4d83"
                     android:id="@+id/enter_time"
                     android:textSize="20sp"
                     android:paddingStart="16dp"
@@ -256,17 +254,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:padding="8dp"
-            android:text="@string/temperature"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_marginTop="16dp"
+            android:text="@string/temperature_slide"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="24sp" />
 
         <RadioGroup
             android:id="@+id/temp_achieved_radio_group"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal">
 
             <RadioButton
@@ -274,16 +274,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cold"
-                android:textColor="#575757"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:layout_margin="4dp"/>
 
             <RadioButton
                 android:id="@+id/cool_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cool"
-                android:textColor="#575757"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:layout_margin="4dp"/>
 
             <RadioButton
                 android:id="@+id/tepid_radio_button"
@@ -291,32 +299,48 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/tepid"
-                android:textColor="#575757"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:layout_margin="4dp"/>
 
             <RadioButton
                 android:id="@+id/warm_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/warm"
-                android:textColor="#575757"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:layout_margin="4dp"/>
 
             <RadioButton
                 android:id="@+id/hot_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hot"
-                android:textColor="#575757"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:layout_margin="4dp"/>
 
             <RadioButton
                 android:id="@+id/scalding_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/scalding"
-                android:textColor="#575757"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:layout_margin="4dp"/>
 
         </RadioGroup>
 
@@ -443,10 +467,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:padding="8dp"
             android:gravity="center_horizontal"
-            android:textColor="@color/black"
             android:text="Check all that are true"
             android:textStyle="bold"/>
 
@@ -462,7 +485,7 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#575757"
                 android:text="@string/rottenEgg_smell" />
 
             <CheckBox
@@ -491,7 +514,7 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#575757"
                 android:text="@string/sediment" />
 
             <CheckBox
@@ -520,7 +543,7 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#575757"
                 android:text="@string/feathery" />
 
             <CheckBox
@@ -549,7 +572,7 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#575757"
                 android:text="@string/bacteria" />
 
             <CheckBox
@@ -578,7 +601,7 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#575757"
                 android:text="@string/pesticide" />
 
             <CheckBox
@@ -607,7 +630,7 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#575757"
                 android:text="@string/lead" />
 
             <CheckBox
@@ -627,13 +650,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="8dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:text="Enter Test Results"
             android:layout_marginTop="20dp"
-            android:textStyle="bold"/>
+            android:gravity="center_horizontal"
+            android:padding="8dp"
+            android:text="Enter Test Results"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
